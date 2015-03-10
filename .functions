@@ -1,0 +1,48 @@
+# vim: set ft=sh:
+
+# Inspect docker container helper
+function di () {
+    if [[ $1 = '' ]] || [[ $2 = '' ]]
+    then
+        echo "Missing an argument"
+    elif [[ $1 = '--net' ]] || [[ $1 = '-n' ]]
+    then
+        docker inspect -f "{{ json .NetworkSettings }}" $2 | python -mjson.tool      
+    elif [[ $1 = '--vol' ]] || [[ $1 = '-v' ]]
+    then
+        docker inspect -f "{{ json .Volumes }}" $2 | python -mjson.tool      
+    else
+        docker inspect -f "{{ json $1 }}" $2 | python -mjson.tool      
+    fi
+}
+
+function da () {
+    docker start $1 && docker attach $1
+}
+
+function newbox () {
+    docker run --name $1 \
+               --volumes-from=volume_container -it \
+}
+
+rtr () {
+    re='^[0-9]+$'
+    motown="10.1.39.80"
+    bport="10.1.0.167"
+    chtn="10.1.56.40"
+    if [[ "$1" = "-b" ]]
+    then
+        telnet "$bport" $(($2+2000))
+    elif [[ "$1" = "-c" ]]
+    then
+        telnet "$chtn" $(($2+2064))
+    elif [[ "$1" = "-m" ]]
+    then
+        telnet "$motown" $(($2+2000))
+    elif [[ "$1" =~ $re ]]
+    then
+        telnet "$bport" $(($1+2000))
+    else
+        echo "Not supported"
+    fi
+}

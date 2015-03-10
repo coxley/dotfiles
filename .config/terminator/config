@@ -1,0 +1,95 @@
+[global_config]
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  tab_position = hidden
+  inactive_color_offset = 0.93
+  suppress_multiple_term_dialog = True
+[keybindings]
+  switch_to_tab_10 = None
+  new_tab = <Shift>Down
+  next_tab = <Shift>Right
+  move_tab_right = <Primary>Right
+  prev_tab = <Shift>Left
+  switch_to_tab_4 = <Primary>4
+  switch_to_tab_5 = <Primary>5
+  move_tab_left = <Primary>Left
+  switch_to_tab_3 = <Primary>3
+  switch_to_tab_1 = <Primary>1
+  switch_to_tab_2 = <Primary>2
+  copy = <Primary><Alt>c
+  paste = <Primary><Alt>v
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#171717:#960050:#66aa11:#c47f2c:#30309b:#7e40a5:#3579a8:#9999aa:#303030:#ff0090:#80ff00:#ffba68:#5f5fee:#bb88dd:#4eb4fa:#d0d0d0"
+    background_image = None
+    scrollback_lines = 10000
+    cursor_shape = underline
+    use_system_font = False
+    foreground_color = "#d0d0d0"
+    icon_bell = False
+    show_titlebar = False
+    font = Source Code Pro Medium 9
+    background_color = "#171717"
+    allow_bold = False
+  [[solarized dark]]
+    scrollbar_position = hidden
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_image = None
+    scrollback_lines = 10000
+    cursor_shape = underline
+    use_system_font = False
+    foreground_color = "#839496"
+    icon_bell = False
+    show_titlebar = False
+    font = Source Code Pro Medium 9
+    background_color = "#002b36"
+    allow_bold = False
+  [[solarized light]]
+    scrollbar_position = hidden
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_image = None
+    scrollback_lines = 10000
+    cursor_shape = underline
+    use_system_font = False
+    foreground_color = "#657b83"
+    icon_bell = False
+    show_titlebar = False
+    font = Source Code Pro Medium 9
+    background_color = "#fdf6e3"
+    allow_bold = False
+  [[blue-discernable]]
+    scrollbar_position = hidden
+    palette = "#3d3d3d:#6673bf:#3ea290:#b0ead9:#31658c:#596196:#8292b2:#c8cacc:#4d4d4d:#899aff:#52ad91:#98c9bb:#477ab3:#7882bf:#95a7cc:#edeff2"
+    background_image = None
+    scrollback_lines = 10000
+    cursor_shape = underline
+    use_system_font = False
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    font = Source Code Pro Medium 9
+    background_color = "#0c0c0c"
+    allow_bold = False
+  [[tf2]]
+    scrollbar_position = hidden
+    palette = "#666661:#992e2e:#4c3226:#a67c53:#4c7399:#bf9986:#d97742:#34302d:#7f7f7a:#b23636:#664233:#bf8f60:#5986b2:#d9ae98:#f2854a:#4c4742"
+    background_image = None
+    scrollback_lines = 10000
+    cursor_shape = underline
+    use_system_font = False
+    foreground_color = "#000000"
+    icon_bell = False
+    show_titlebar = False
+    font = Source Code Pro Medium 9
+    background_color = "#ffffff"
+    allow_bold = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+      command = ""
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]

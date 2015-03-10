@@ -1,0 +1,20 @@
+# vim: set ft=sh:
+alias tmux='tmux -2'
+alias psgrep='ps aux | grep'
+# SSH Options to account for some Cisco devices
+alias ssh='ssh \
+    -o KexAlgorithms=diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 \
+    -o UserKnownHostsFile=/dev/null \
+    -o StrictHostKeyChecking=no'
+# Sort by first column IPv4
+alias sortip='sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n'
+alias sshproxy='ssh -C2qTnN -D 0.0.0.0:8080'
+alias cdburn='wodim -v -sao dev=/dev/sr0'
+alias ls='ls --group-directories-first --color=tty'
+alias openconnect='sudo openconnect -b --pid-file /var/run/vpnc/openconnect.pid'
+alias speedtest='echo "scale=2; `curl --progress-bar -w "%{speed_download}" \
+                 http://speedtest.wdc01.softlayer.com/downloads/test100.zip  \
+                 -o /dev/null` / 131072" | bc | xargs -I {} echo {} mbps'
+# Docker
+alias drm="docker rm"
+alias dps="docker ps"
