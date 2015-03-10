@@ -1,4 +1,7 @@
 # vim: set ft=sh:
+alias hist10="$ history | awk '{print $4}' | sort | uniq -c | sort -nr | head"
+alias hist20="$ history | awk '{print $4}' | sort | uniq -c | sort -nr \
+              | head -20"
 alias tmux='tmux -2'
 alias psgrep='ps aux | grep'
 # SSH Options to account for some Cisco devices
