@@ -21,3 +21,4 @@ alias speedtest='echo "scale=2; `curl --progress-bar -w "%{speed_download}" \
 # Docker
 alias drm="docker rm"
 alias dps="docker ps"
+alias dcreboot="docker-compose stop && docker-compose up -d"
