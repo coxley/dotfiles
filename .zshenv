@@ -6,6 +6,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR='vim'
+export BROWSER='firefox'
 export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export TERM=xterm-256color
