@@ -29,6 +29,7 @@ plugins=(git
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
+source $HOME/.zshenv
 source $HOME/.functions
 
 # virtualenvwrapper
