@@ -1,5 +1,9 @@
 # vim: set ft=sh:
 
+function server () {
+    firefox http://localhost:${1} && python -m SimpleHTTPServer $1
+}
+
 # Inspect docker container helper
 function di () {
     if [[ $1 = '' ]] || [[ $2 = '' ]]
