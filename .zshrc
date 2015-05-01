@@ -1,8 +1,8 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="steeef"
-#ZSH_THEME="bira"
-#ZSH_THEME="tjkirch"
+# ZSH_THEME="steeef"
+# ZSH_THEME="bira"
+ZSH_THEME="tjkirch"
 
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
