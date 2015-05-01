@@ -1,9 +1,5 @@
 #!/bin/env zsh
 
-for file in $PWD/.*(D)
-do
-    cp -r $file $HOME/
-done
 
 ZSH=$HOME/.oh-my-zsh
 # Install ohmyzsh if not already installed
@@ -22,3 +18,8 @@ then
         $HOME/.vim/bundle/Vundle.vim
 fi
 
+for file in $PWD/.*(D)
+do
+    cp -r $file $HOME/
+done
+rm -rf $HOME/.git $HOME/.gitconfig  # Remove git folders copied from repo
