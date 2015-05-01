@@ -36,7 +36,15 @@ source $HOME/.functions
 export WORKON_HOME=$HOME/docs/envs
 export PROJECT_HOME=$HOME/docs/projects
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7 
-source /usr/bin/virtualenvwrapper.sh
+
+# Virtualenvwrapper may install to $HOME
+if [ ! -d "/usr/bin/virtualenvwrapper.sh" ]
+then
+    source $HOME/.local/bin/virtualenvwrapper.sh
+else
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
 # Most environment set in .zshenv
 [ -n "$TMUX" ] && export TERM=screen-256color
 
