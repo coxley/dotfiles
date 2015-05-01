@@ -16,8 +16,16 @@ Plugin 'coxley/codepad'
 Plugin 'junegunn/limelight.vim'    
 Plugin 'junegunn/goyo.vim'         
 Plugin 'altercation/vim-colors-solarized'         
+Plugin 'tomtom/tcomment_vim'         
+Plugin 'scrooloose/nerdtree'         
 call vundle#end()                  
-filetype plugin indent on          
+filetype plugin indent on
+
+" Close vim if NERDTree is the only window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Open NERDTree with <F3>
+nnoremap <F3> :NERDTreeToggle<CR>
 
 
 if &term =~ '256color'
