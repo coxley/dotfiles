@@ -10,6 +10,12 @@
 # Need to make sure ~/.vim/backup exists otherwise config causes vim to yell
 [ ! -d "~/.vim/backup" ] && mkdir ~/.vim/backup
 
+# install virtualenvwrapper if not installed
+# make sure to install it to user to avoid affecting the system
+pip_freeze=$(pip freeze 2> /dev/null)
+[[ $pip_freeze != *"virtualenvwrapper"* ]] && pip install --user virtualenvwrapper
+
+
 for file in $PWD/.*(D)
 do
     cp -r $file $HOME/
