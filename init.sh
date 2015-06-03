@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/bin/zsh
 
 #  Vim
 
@@ -21,3 +21,6 @@ do
     cp -r $file $HOME/
 done
 rm -rf $HOME/.git $HOME/.gitconfig  # Remove git folders copied from repo
+
+# Update/Install vim plugins
+vim +PluginUpdate
