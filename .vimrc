@@ -13,18 +13,21 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'coxley/codepad'
-Plugin 'junegunn/limelight.vim'    
-Plugin 'junegunn/goyo.vim'         
-Plugin 'altercation/vim-colors-solarized'         
-Plugin 'tomtom/tcomment_vim'         
-Plugin 'scrooloose/nerdtree'         
-Plugin 'godlygeek/tabular'         
-Plugin 'rodjek/vim-puppet'         
-call vundle#end()                  
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'rodjek/vim-puppet'
+call vundle#end()
 filetype plugin indent on
 
 " Close vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" .pp puppet syntax
+au BufRead,BufNewFile *.pp setfiletype puppet
 
 " Open NERDTree with <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
@@ -35,16 +38,16 @@ if &term =~ '256color'
     " work properly when Vim is used inside tmux and GNU screen.
     set t_ut=
 endif
-                                   
-autocmd User GoyoEnter Limelight   
-autocmd User GoyoLeave Limelight!  
-nnoremap <F9> :Goyo<CR>              
+
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
+nnoremap <F9> :Goyo<CR>
 "autocmd FileType rst let g:solarized_termcolors=256
 "autocmd FileType rst set background=light
 "autocmd FileType rst colorscheme solarized
 
-let python_highlight_all = 1  
-let python_version_2 = 1      
+let python_highlight_all = 1
+let python_version_2 = 1
 syntax on                       " enables syntax highlighting
 let mapleader=","               " change mapleader from \ to '
 set hidden                      " multi-file behaviors
@@ -102,11 +105,11 @@ nnoremap <F4> :GundoToggle<CR>
 
 " Colorscheme
 set t_Co=256
-"let base16colorspace=256 
+"let base16colorspace=256
 "let g:molokai_original = 1
 "let g:rehash256 = 1
-"set background=dark      
-colorscheme molokai      
+"set background=dark
+colorscheme molokai
 "colorscheme xoria256
 "colorscheme solarized
 highlight Search ctermbg='NONE' ctermfg=226
