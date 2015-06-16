@@ -18,6 +18,8 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'altercation/vim-colors-solarized'         
 Plugin 'tomtom/tcomment_vim'         
 Plugin 'scrooloose/nerdtree'         
+Plugin 'godlygeek/tabular'         
+Plugin 'rodjek/vim-puppet'         
 call vundle#end()                  
 filetype plugin indent on
 
