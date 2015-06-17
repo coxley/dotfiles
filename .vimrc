@@ -27,7 +27,7 @@ filetype plugin indent on
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " .pp puppet syntax
-au BufRead,BufNewFile *.pp setfiletype puppet
+au BufRead,BufNewFile *.pp set filetype=puppet
 
 " Open NERDTree with <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
