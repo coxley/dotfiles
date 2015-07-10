@@ -32,6 +32,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufRead,BufNewFile *.pp set filetype=puppet
 au BufRead,BufNewFile *rb set ts=2 sw=2 softtabstop=2 expandtab
 
+" Dockerfile puppet syntax
+au BufRead,BufNewFile Dockerfile set ft=Dockerfile
+
 " Open NERDTree with <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
 
