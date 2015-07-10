@@ -20,6 +20,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'rodjek/vim-puppet'
+Plugin 'markcornick/vim-vagrant'
+Plugin 'ekalinin/Dockerfile.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -28,6 +30,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " .pp puppet syntax
 au BufRead,BufNewFile *.pp set filetype=puppet
+au BufRead,BufNewFile *rb set ts=2 sw=2 softtabstop=2 expandtab
 
 " Open NERDTree with <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
