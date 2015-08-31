@@ -5,9 +5,9 @@ if ! zgen-saved; then
 
     # Load base oh-my-zsh and theme
     zgen oh-my-zsh
-    # zgen oh-my-zsh themes/steeef
+    zgen oh-my-zsh themes/steeef
     # zgen oh-my-zsh themes/arrow
-    zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+    # zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
     # Custom plugin
     zgen load coxley/zsh-files
