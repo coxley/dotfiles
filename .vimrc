@@ -25,7 +25,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'coxley/codepad'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
