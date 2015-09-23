@@ -3,25 +3,43 @@ set nocompatible                " Required for Vundle
 filetype plugin off             " Required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" Plugin
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tomasr/molokai'
+
+" Syntax plugins
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'markcornick/vim-vagrant'
+Plugin 'cespare/vim-toml'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'rodjek/vim-puppet'
 Plugin 'trapd00r/irc.vim'
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/InstantRst'
+Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'plasticboy/vim-markdown'
+
+" Color schemes
+Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dhruvasagar/vim-table-mode'
+
+" Utility plugins
+Plugin 'coxley/codepad'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpeters/vim-better-whitespace'
+
+" Powerhouse plugins
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/InstantRst'
 Plugin 'sjl/gundo.vim'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'coxley/codepad'
-Plugin 'junegunn/limelight.vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
-Plugin 'rodjek/vim-puppet'
-Plugin 'markcornick/vim-vagrant'
-Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'mattn/emmet-vim'
+
+" Distraction free
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -109,30 +127,29 @@ nnoremap <space> za
 vnoremap <space> zf
 nnoremap <F4> :GundoToggle<CR>
 
-" Colorscheme
+" == Colors
 set t_Co=256
-"let base16colorspace=256
-"let g:molokai_original = 1
-"let g:rehash256 = 1
-"set background=dark
 colorscheme molokai
-"colorscheme xoria256
-"colorscheme solarized
 highlight Search ctermbg='NONE' ctermfg=226
-"highlight Search ctermbg='NONE' ctermfg=118    "Chartreuse
-"let g:zenburn_high_Contrast=1
-"colorscheme zenburn
-"set background=dark
 
+" == Plugins
 
-" Plugins
+" === Syntastic
 let g:syntastic_python_python_exec = '/usr/bin/python2'
-" multiple cursors
-"let g:multi_cursor_use_default_mapping=0
-"let g:multi_cursor_next_key='<Leader>n'
-"let g:multi_cursor_prev_key='<Leader>p'
-"let g:multi_cursor_skip_key='<Leader>x'
-"let g:multi_cursor_quit_key='<Esc>'
+
+" === Markdown
+autocmd BufNewFile,BufRead *.md map <Leader>1 :HeaderDecrease<CR>
+autocmd BufNewFile,BufRead *.md map <Leader>2 :HeaderIncrease<CR>
+autocmd BufNewFile,BufRead *.md map <Leader>toc :Toch<CR>
+let g:vim_markdown_frontmatter=1
+
+" === Whitespace
+
+" May want to disable markdown whitespace highlighting as sometimes it's
+" necessary
+" let g:better_whitespace_filetypes_blacklist+=['mkd.markdown']
+
+" == Other
 
 if has("vms")
     set nobackup		" do not keep a backup file, use versions instead
