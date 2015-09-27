@@ -27,6 +27,7 @@ Plugin 'coxley/codepad'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'suan/vim-instant-markdown'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
