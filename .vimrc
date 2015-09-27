@@ -15,6 +15,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'trapd00r/irc.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ClockworkNet/vim-junos-syntax'
 
 " Color schemes
 Plugin 'tomasr/molokai'
