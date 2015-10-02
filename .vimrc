@@ -20,7 +20,7 @@ Plugin 'ClockworkNet/vim-junos-syntax'
 " Color schemes
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'chrisbra/Colorizer'
 
 " Utility plugins
 Plugin 'coxley/codepad'
@@ -28,6 +28,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'dhruvasagar/vim-table-mode'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
