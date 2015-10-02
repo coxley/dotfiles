@@ -152,6 +152,9 @@ let g:vim_markdown_frontmatter=1
 " necessary
 " let g:better_whitespace_filetypes_blacklist+=['mkd.markdown']
 
+" === Colorizer
+let g:colorizer_auto_filetype='css,html'
+
 " == Other
 
 if has("vms")
