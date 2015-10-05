@@ -31,16 +31,6 @@ if ! zgen-saved; then
     zgen oh-my-zsh plugins/virtualenv
     zgen oh-my-zsh plugins/wd
 
-    # Load last
-    # Uses history to provide suggestions
-    zgen load tarruda/zsh-autosuggestions
-
     # Save zgen profile
     zgen save
 fi
-
-# Enable suggestions
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
