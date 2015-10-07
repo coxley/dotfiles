@@ -24,6 +24,7 @@ Plugin 'chrisbra/Colorizer'
 
 " Utility plugins
 Plugin 'coxley/codepad'
+Plugin 'keith/gist.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'

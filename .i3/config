@@ -1,0 +1,228 @@
+
+############# Variables
+set $HOME /home/codey
+set $alt Mod1
+set $win Mod4
+
+set $WS1 1: --
+set $WS2 2: mail
+set $WS3 3: prod
+set $WS4 4: mon
+set $WS5 5: ffx
+set $WS6 6: chrome
+set $WS7 7: --
+set $WS8 8: --
+set $WS9 9: --
+set $WS10 10: --
+
+
+set $f1 0xffbe
+set $f2 0xffbf
+set $f3 0xffc0
+set $f4 0xffc1
+set $f5 0xffc2
+set $f6 0xffc3
+set $f7 0xffc4
+set $f8 0xffc5
+set $f9 0xffc6
+set $f10 0xffc7
+
+set $esc 0xff1b
+
+############## Execs
+exec nm-applet
+exec ~/bin/setup_display.sh
+
+############## Window Rules
+workspace_auto_back_and_forth yes
+new_float pixel 2
+new_window pixel 2
+
+### Floating
+for_window [class="Thunar"] floating enable
+for_window [class="Vimb"] focus child, layout tabbed, focus
+for_window [class="File-roller"] floating enable
+for_window [class="feh"] floating enable
+for_window [title="Preferences"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Gedit"] floating enable
+for_window [window_role="compose"] floating enable
+for_window [window_role="message_search"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+### Scratchpad
+bindsym $win+Shift+minus move scratchpad
+bindsym $win+minus scratchpad show
+bindsym $win+Shift+m move workspace to output left
+
+############## Keybinds
+floating_modifier $alt
+bindsym $alt+Shift+0 exec $HOME/bin/kbtoggle.sh
+bindsym $win+Return exec terminator
+bindsym $win+c kill
+bindsym $alt+p exec dmenu_run
+bindsym $win+Shift+i exec firefox
+bindsym XF86HomePage exec firefox
+bindsym $win+$esc exec i3lock -c 000000
+
+############## Font
+font pango:Source Code Pro, Awesome 15
+
+
+############## Window Manipulation
+
+# change focus
+bindsym $alt+h focus left
+bindsym $alt+j focus down
+bindsym $alt+k focus up
+bindsym $alt+l focus right
+
+# move focused window
+bindsym $alt+Shift+h move left
+bindsym $alt+Shift+j move down
+bindsym $alt+Shift+k move up
+bindsym $alt+Shift+l move right
+
+# split in vertical and horizontal orientation
+bindsym $alt+g split h
+bindsym $alt+v split v
+
+bindsym $alt+f fullscreen
+
+# Switch between layouts
+bindsym $alt+apostrophe layout stacking
+bindsym $alt+comma layout tabbed
+bindsym $alt+period layout toggle split
+
+bindsym $alt+Shift+space floating toggle
+bindsym $alt+space focus mode_toggle
+bindsym $alt+a focus parent
+
+# focus the child container
+#bindsym $alt+d focus child
+
+# switch to workspace
+bindsym $alt+$f1 workspace $WS1
+bindsym $alt+$f2 workspace $WS2
+bindsym $alt+$f3 workspace $WS3
+bindsym $alt+$f4 workspace $WS4
+bindsym $alt+$f5 workspace $WS5
+bindsym $alt+$f6 workspace $WS6
+bindsym $alt+$f7 workspace $WS7
+bindsym $alt+$f8 workspace $WS8
+bindsym $alt+$f9 workspace $WS9
+bindsym $alt+$f10 workspace $WS10
+bindsym $alt+KP_7 workspace KP1
+bindsym $alt+KP_8 workspace KP2
+
+# move focused container to workspace
+bindsym $alt+Shift+$f1 move container to workspace $WS1
+bindsym $alt+Shift+$f2 move container to workspace $WS2
+bindsym $alt+Shift+$f3 move container to workspace $WS3
+bindsym $alt+Shift+$f4 move container to workspace $WS4
+bindsym $alt+Shift+$f5 move container to workspace $WS5
+bindsym $alt+Shift+$f6 move container to workspace $WS6
+bindsym $alt+Shift+$f7 move container to workspace $WS7
+bindsym $alt+Shift+$f8 move container to workspace $WS8
+bindsym $alt+Shift+$f9 move container to workspace $WS9
+bindsym $alt+Shift+$f10 move container to workspace $WS10
+bindsym $alt+Shift+KP_7 move container to workspace KP1
+bindsym $alt+Shift+KP_8 move container to workspace KP2
+
+
+# Assign to workspace
+
+assign [class="(?i)thunderbird"] → $WS2
+assign [class="(?i)firefox"] → $WS5
+assign [class="(?i)chrome"] → $WS6
+
+# reload the configuration file
+bindsym $alt+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $alt+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $alt+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $alt+r mode "resize"
+
+#bar {
+#     status_command i3status
+#     mode dock
+#     colors {
+#        statusline      #999999
+#        background      #252525
+#
+#        focused_workspace  #292929         #292929         #cccccc
+#        active_workspace   #252525         #252525         #696f89
+#        inactive_workspace #252525         #252525         #6b6b6b
+#        urgent_workspace   #252525         #252525         #c7a551
+#   }
+#}
+# class                 border  backgr. text    indicator
+#client.focused          #849492 #849492 #ffffff #2e9ef4
+#client.focused_inactive #6e686f #6e686f #ffffff #484e50
+#client.unfocused        #6e686f #6e686f #888888 #292d2e
+#client.urgent           #e9e6e6 #BFB8B0 #ffffff #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+bar {
+    status_command i3status
+    tray_output primary
+    position bottom
+    mode dock
+    font pango:Source Code Pro, Awesome 15
+
+    colors {
+        statusline      #9999AA
+        background      #191919
+        # BLUE
+        # focused_workspace      #191919          #191919         #2b6cc4
+        focused_workspace       #191919         #191919         #9fbc00
+        active_workspace        #191919         #191919         #696f89
+        inactive_workspace      #191919         #191919         #696f89
+        urgent_workspace        #191919         #191919         #bf3f34
+   }
+}
+
+
+
+# class                 border  backgr.    text
+## LIME GREEN ACTIVE BORDER
+client.unfocused                #444444 #444444  #ffffff
+client.focused_inactive         #444444 #444444  #2c2c2f
+client.urgent                   #383a3b #383a3b  #ee0000
+# client.focused                  #9fbc00 #9fbc00  #111111
+## BLUE ACTIVE BORDER
+client.focused                 #2b6cc4 #2b6cc4  #111111
+## RED ACTIVE BORDER
+#client.focused                 #bf3f34 #bf3f34  #111111
+## LIGHTER RED ACTIVE BORDER
+#client.focused                 #cc5555 #cc5555  #111111
