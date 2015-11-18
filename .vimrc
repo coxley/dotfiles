@@ -16,6 +16,7 @@ Plugin 'trapd00r/irc.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ClockworkNet/vim-junos-syntax'
+Plugin 'kchmck/vim-coffee-script'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -53,6 +54,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " .pp puppet syntax
 au BufRead,BufNewFile *.pp set filetype=puppet
 au BufRead,BufNewFile *rb set ts=2 sw=2 softtabstop=2 expandtab
+au BufRead,BufNewFile *yml set ts=2 sw=2 softtabstop=2 expandtab
 
 " Dockerfile puppet syntax
 au BufRead,BufNewFile Dockerfile set ft=Dockerfile

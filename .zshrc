@@ -14,7 +14,7 @@ if ! zgen-saved; then
 
     # Shell Syntax Highlighting
     zgen load zsh-users/zsh-syntax-highlighting
-    
+
     # oh-my-zsh Plugins
     zgen oh-my-zsh plugins/catimg
     zgen oh-my-zsh plugins/common-aliases
