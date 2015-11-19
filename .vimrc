@@ -17,6 +17,7 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ClockworkNet/vim-junos-syntax'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'nathanalderson/yang.vim'
 
 " Color schemes
 Plugin 'tomasr/molokai'
