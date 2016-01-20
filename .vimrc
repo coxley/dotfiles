@@ -2,6 +2,8 @@
 set nocompatible                " Required for Vundle
 filetype plugin off             " Required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set laststatus=2
 call vundle#begin()
 " Plugin
 Plugin 'gmarik/Vundle.vim'
@@ -33,6 +35,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'powerline/powerline'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
