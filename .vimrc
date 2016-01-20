@@ -3,6 +3,7 @@ set nocompatible                " Required for Vundle
 filetype plugin off             " Required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=$HOME/.local/lib/python2.6/site-packages/powerline/bindings/vim/
 set laststatus=2
 call vundle#begin()
 " Plugin
