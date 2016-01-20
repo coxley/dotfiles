@@ -18,6 +18,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'ClockworkNet/vim-junos-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'nathanalderson/yang.vim'
+Plugin 'fatih/vim-go'
 
 " Color schemes
 Plugin 'tomasr/molokai'
