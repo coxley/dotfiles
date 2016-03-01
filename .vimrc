@@ -6,6 +6,10 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set rtp+=$HOME/.local/lib/python2.6/site-packages/powerline/bindings/vim/
 set laststatus=2
 call vundle#begin()
+set ts=4 sw=4 softtabstop=4
+set list
+set listchars=tab:\→\ ,trail:.
+
 " Plugin
 Plugin 'gmarik/Vundle.vim'
 
@@ -22,6 +26,7 @@ Plugin 'ClockworkNet/vim-junos-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'fatih/vim-go'
+Plugin 'mitsuhiko/vim-jinja'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -61,6 +66,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufRead,BufNewFile *.pp set filetype=puppet
 au BufRead,BufNewFile *rb set ts=2 sw=2 softtabstop=2 expandtab
 au BufRead,BufNewFile *yml set ts=2 sw=2 softtabstop=2 expandtab
+au BufRead,BufNewFile *j2 set ts=2 sw=2 softtabstop=2 expandtab ft=jinja
 
 " Dockerfile puppet syntax
 au BufRead,BufNewFile Dockerfile set ft=Dockerfile
