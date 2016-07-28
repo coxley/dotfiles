@@ -15,7 +15,7 @@ set $WS8 8: 
 set $WS9 9: 
 set $WS10 10: 
 
-
+# Set variables for F-row
 set $f1 0xffbe
 set $f2 0xffbf
 set $f3 0xffc0
@@ -113,30 +113,30 @@ bindsym $alt+a focus parent
 #bindsym $alt+d focus child
 
 # switch to workspace
-bindsym $alt+$f1 workspace $WS1
-bindsym $alt+$f2 workspace $WS2
-bindsym $alt+$f3 workspace $WS3
-bindsym $alt+$f4 workspace $WS4
-bindsym $alt+$f5 workspace $WS5
-bindsym $alt+$f6 workspace $WS6
-bindsym $alt+$f7 workspace $WS7
-bindsym $alt+$f8 workspace $WS8
-bindsym $alt+$f9 workspace $WS9
-bindsym $alt+$f10 workspace $WS10
+bindsym $alt+1 workspace $WS1
+bindsym $alt+2 workspace $WS2
+bindsym $alt+3 workspace $WS3
+bindsym $alt+4 workspace $WS4
+bindsym $alt+5 workspace $WS5
+bindsym $alt+6 workspace $WS6
+bindsym $alt+7 workspace $WS7
+bindsym $alt+8 workspace $WS8
+bindsym $alt+9 workspace $WS9
+bindsym $alt+10 workspace $WS10
 bindsym $alt+KP_7 workspace KP1
 bindsym $alt+KP_8 workspace KP2
 
 # move focused container to workspace
-bindsym $alt+Shift+$f1 move container to workspace $WS1
-bindsym $alt+Shift+$f2 move container to workspace $WS2
-bindsym $alt+Shift+$f3 move container to workspace $WS3
-bindsym $alt+Shift+$f4 move container to workspace $WS4
-bindsym $alt+Shift+$f5 move container to workspace $WS5
-bindsym $alt+Shift+$f6 move container to workspace $WS6
-bindsym $alt+Shift+$f7 move container to workspace $WS7
-bindsym $alt+Shift+$f8 move container to workspace $WS8
-bindsym $alt+Shift+$f9 move container to workspace $WS9
-bindsym $alt+Shift+$f10 move container to workspace $WS10
+bindsym $alt+Shift+1 move container to workspace $WS1
+bindsym $alt+Shift+2 move container to workspace $WS2
+bindsym $alt+Shift+3 move container to workspace $WS3
+bindsym $alt+Shift+4 move container to workspace $WS4
+bindsym $alt+Shift+5 move container to workspace $WS5
+bindsym $alt+Shift+6 move container to workspace $WS6
+bindsym $alt+Shift+7 move container to workspace $WS7
+bindsym $alt+Shift+8 move container to workspace $WS8
+bindsym $alt+Shift+9 move container to workspace $WS9
+bindsym $alt+Shift+10 move container to workspace $WS10
 bindsym $alt+Shift+KP_7 move container to workspace KP1
 bindsym $alt+Shift+KP_8 move container to workspace KP2
 
