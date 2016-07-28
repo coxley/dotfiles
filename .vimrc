@@ -280,15 +280,15 @@ set visualbell                  " turn off terminal bell
 set showbreak=+                 " display + for wrapped lines
 set number                      " show line numbers
 
-" Create backup dir if not present
-" let backupdir_=s:editor_root . '/backup'
-" if !filereadable(backupdir_)
-"     silent call mkdir(backupdir_, "p")
-" endif
+Create backup dir if not present
+let backupdir_=s:editor_root . '/backup'
+if !filereadable(backupdir_)
+    silent call mkdir(backupdir_, "p")
+endif
 
 set cursorline                  " highlight current row cursor is in
 set backup                      " keep a backup file
-set backupdir="~/.vim/backup"
+set backupdir=~/.vim/backup
 
 set showcmd                     " display incomplete commands
 set backspace=indent,eol,start
@@ -439,3 +439,4 @@ let g:UltiSnipsEditSplit='vertical'
 let g:ultisnips_python_style="google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+
