@@ -435,7 +435,7 @@ nnoremap <leader>ue :UltiSnipsEdit<CR>
 
 let g:UltiSnipsEditSplit='vertical'
 "
-let g:UltiSnipsUsePythonVersion = 3
+" let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style="google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
