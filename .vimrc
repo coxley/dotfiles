@@ -44,11 +44,6 @@ highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%81v.\+/
 
-" Create backup dir if not present
-let backupdir=s:editor_root . '/backup'
-if !filereadable(backupdir)
-    silent call mkdir(backupdir, "p")
-endif
 
 " #######
 " Plugins
@@ -107,6 +102,7 @@ Plugin 'powerline/powerline'
 Plugin 'kana/vim-fakeclip'
 Plugin 'jlfwong/vim-arcanist'
 Plugin 'phleet/vim-mercenary'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
@@ -116,8 +112,11 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
 
 " Distraction free
 Plugin 'junegunn/goyo.vim'
@@ -281,9 +280,16 @@ set visualbell                  " turn off terminal bell
 set showbreak=+                 " display + for wrapped lines
 set number                      " show line numbers
 
+" Create backup dir if not present
+" let backupdir_=s:editor_root . '/backup'
+" if !filereadable(backupdir_)
+"     silent call mkdir(backupdir_, "p")
+" endif
+
 set cursorline                  " highlight current row cursor is in
 set backup                      " keep a backup file
-set backupdir=backupdir         " keep a backup file
+set backupdir="~/.vim/backup"
+
 set showcmd                     " display incomplete commands
 set backspace=indent,eol,start
 
@@ -358,24 +364,28 @@ autocmd! BufWritePost * Neomake
 " ########
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 0
+let g:deoplete#auto_completion_start_length = 1
+let g:deoplete#enable_smart_case = 1
+"
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#force_py_version = 3
+let g:jedi#show_call_signatures = "1"
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "2"
+
+
+
+autocmd FileType python setlocal completeopt-=preview
+
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#enable_cache = 1
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 
-inoremap <silent><expr><leader><tab> deoplete#mappings#manual_complete()
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" augroup omnifuncs
-"   autocmd!
-"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" augroup end
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " #########
 " Clipboard
@@ -417,11 +427,15 @@ nnoremap <silent> <Leader>tm :TableModeToggle
 " Snippets (Ultisnips)
 " ####################
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger='<leader>.'
+let g:UltiSnipsJumpForwardTrigger='<leader>r'
+let g:UltiSnipsJumpBackwardTrigger='<leader>w'
 
+nnoremap <leader>ue :UltiSnipsEdit<CR>
+
+let g:UltiSnipsEditSplit='vertical'
+"
+let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style="google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
