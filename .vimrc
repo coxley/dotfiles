@@ -423,3 +423,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:ultisnips_python_style="google"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets"]
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
