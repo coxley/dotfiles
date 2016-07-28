@@ -44,7 +44,6 @@ fi
 
 [ -z $DISPLAY ] || BROWSER=google-chrome-stable
 
-[ -f ~/.zsh_theme ] && source ~/.zsh_theme
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
-
 [ -f ~/.zsh_post ] && source ~/.zsh_post
+[ -f ~/.zsh_theme ] && source ~/.zsh_theme
