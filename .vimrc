@@ -391,6 +391,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Clipboard
 " #########
 
+set clipboard+=unnamedplus
+
 if !has('nvim')
     :com -range Cz :silent :<line1>,<line2>w !xsel -i -b
     :com -range Cx :silent :<line1>,<line2>w !xsel -i -p
