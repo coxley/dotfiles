@@ -1,19 +1,19 @@
-
 ############# Variables
 set $HOME /home/codey
 set $alt Mod1
 set $win Mod4
 
-set $WS1 1: --
-set $WS2 2: mail
-set $WS3 3: prod
-set $WS4 4: mon
-set $WS5 5: ffx
-set $WS6 6: chrome
-set $WS7 7: --
-set $WS8 8: --
-set $WS9 9: --
-set $WS10 10: --
+set $WS1 1: 
+set $WS2 2: 
+set $WS3 3: 
+set $WS4 4: 
+set $WS5 5: 
+# set $WS6 6: chrome
+set $WS6 6: 
+set $WS7 7: 
+set $WS8 8: 
+set $WS9 9: 
+set $WS10 10: 
 
 
 set $f1 0xffbe
@@ -30,8 +30,15 @@ set $f10 0xffc7
 set $esc 0xff1b
 
 ############## Execs
+exec xrandr --output eDP1 --primary
+exec setxkbmap dvorak
+exec dunst
+
 exec nm-applet
-exec ~/bin/setup_display.sh
+exec parcellite
+
+exec sh ~/.fehbg
+exec xrdb -merge ~/.Xresources
 
 ############## Window Rules
 workspace_auto_back_and_forth yes
@@ -61,16 +68,16 @@ bindsym $win+Shift+m move workspace to output left
 
 ############## Keybinds
 floating_modifier $alt
-bindsym $alt+Shift+0 exec $HOME/bin/kbtoggle.sh
+bindsym $alt+Shift+0 exec ~/bin/kbtoggle.sh
 bindsym $win+Return exec terminator
 bindsym $win+c kill
-bindsym $alt+p exec dmenu_run
-bindsym $win+Shift+i exec firefox
-bindsym XF86HomePage exec firefox
+# bindsym $alt+p exec dmenu_run
+bindsym $alt+p exec ~/bin/dmenu_recent_aliases
 bindsym $win+$esc exec i3lock -c 000000
 
 ############## Font
-font pango:Source Code Pro, Awesome 15
+font pango:Source Code Pro, Awesome 12
+# font pango:Source Code Pro, Awesome 15
 
 
 ############## Window Manipulation
@@ -147,14 +154,7 @@ bindsym $alt+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $alt+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -194,11 +194,13 @@ bindsym $alt+r mode "resize"
 #client.placeholder      #000000 #0c0c0c #ffffff #000000
 
 bar {
-    status_command i3status
+    # status_command i3status
+    status_command py3status
     tray_output primary
     position bottom
     mode dock
-    font pango:Source Code Pro, Awesome 15
+    font pango:Source Code Pro, Awesome 12
+#     # font pango:Source Code Pro, Awesome 15
 
     colors {
         statusline      #9999AA
