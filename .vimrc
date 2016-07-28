@@ -280,7 +280,7 @@ set visualbell                  " turn off terminal bell
 set showbreak=+                 " display + for wrapped lines
 set number                      " show line numbers
 
-Create backup dir if not present
+"Create backup dir if not present
 let backupdir_=s:editor_root . '/backup'
 if !filereadable(backupdir_)
     silent call mkdir(backupdir_, "p")
