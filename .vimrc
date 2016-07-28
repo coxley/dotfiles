@@ -45,7 +45,7 @@ highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%81v.\+/
 
 " No Highlight binding
-nnoremap <leader>n :nohl<CR>
+nnoremap <leader><leader>n :nohl<CR>
 
 " #######
 " Plugins
