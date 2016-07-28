@@ -1,4 +1,4 @@
-[ -f ~/.zsh_work ] && source ~/.zsh_work
+[ -f ~/.zsh_pre ] && source ~/.zsh_pre
 
 source ~/.zgen.zsh
 
@@ -42,5 +42,9 @@ if ! zgen-saved; then
     zgen save
 fi
 
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 [ -z $DISPLAY ] || BROWSER=google-chrome-stable
+
+[ -f ~/.zsh_theme ] && source ~/.zsh_theme
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+
+[ -f ~/.zsh_post ] && source ~/.zsh_post
