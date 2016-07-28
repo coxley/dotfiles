@@ -44,6 +44,8 @@ highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%81v.\+/
 
+" No Highlight binding
+nnoremap <leader>n :nohl<CR>
 
 " #######
 " Plugins
