@@ -1,0 +1,1 @@
+/home/coxley/docs/projects/dotfiles/i3/config

@@ -1,0 +1,1 @@
+/home/coxley/docs/projects/dotfiles/yabar/yabar.conf

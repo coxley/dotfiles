@@ -1,4 +1,5 @@
 dotfiles
 ========
 
-Personal dotfile collection. A lot custom, a lot stolen.
+A LOT was influenced/stolen from
+[napnac/dotfiles](https://github.com/napnac/dotfiles)

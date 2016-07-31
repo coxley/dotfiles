@@ -1,0 +1,11 @@
+# Randomly choose a wallpaper
+wallpaper_id=$(((RANDOM % 28) + 1))
+
+# Load the corresponding theme with it (thanks to themer)
+themer render -a wallpaper$wallpaper_id
+
+# Reload yabar
+# pkill yabar
+# yabar&
+
+echo "$wallpaper_id"
