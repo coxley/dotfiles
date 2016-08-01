@@ -42,16 +42,16 @@ exec xrandr --output eDP1 --primary
 exec setxkbmap dvorak
 
 # Start notification server
-exec --no-startup-id dunst
+exec dunst
 
 # Composite manager (used for transparency)
-exec --no-startup-id compton -b
+exec compton -b
 
-# Bar
-exec --no-startup-id yabar
+# Bar - not currently using
+# exec yabar
 
 # Wallpaper and theme
-exec --no-startup-id ~/bin/set_theme
+exec ~/bin/set_theme
 
 # Taskbar applet for NetworkManager
 exec nm-applet
@@ -67,12 +67,12 @@ exec xrdb -merge ~/.Xresources
 ####################
 
 # Screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 1%
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1%
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1%
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1%
 
 # Keyboard backlight
-bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 11
-bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up 11
+bindsym XF86KbdBrightnessDown exec kbdlight down 11
+bindsym XF86KbdBrightnessUp exec kbdlight up 11
 
 # Sound control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 2 +1%
