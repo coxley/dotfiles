@@ -283,28 +283,12 @@ bar {
 #     # font pango:Source Code Pro, Awesome 15
 
     colors {
-        statusline      #9999AA
-        background      #191919
-        # BLUE
-        # focused_workspace      #191919          #191919         #2b6cc4
-        focused_workspace       #191919         #191919         #9fbc00
-        active_workspace        #191919         #191919         #696f89
-        inactive_workspace      #191919         #191919         #696f89
-        urgent_workspace        #191919         #191919         #bf3f34
+        statusline      $foreground
+        background      $background
+
+        focused_workspace       $background     $background     $primary
+        active_workspace        $background     $background     #696f89
+        inactive_workspace      $background     $background     #696f89
+        urgent_workspace        $background     $background     $warning
    }
 }
-
-
-
-# class                 border  backgr.    text
-## LIME GREEN ACTIVE BORDER
-client.unfocused                #444444 #444444  #ffffff
-client.focused_inactive         #444444 #444444  #2c2c2f
-client.urgent                   #383a3b #383a3b  #ee0000
-# client.focused                  #9fbc00 #9fbc00  #111111
-## BLUE ACTIVE BORDER
-client.focused                 #2b6cc4 #2b6cc4  #111111
-## RED ACTIVE BORDER
-#client.focused                 #bf3f34 #bf3f34  #111111
-## LIGHTER RED ACTIVE BORDER
-#client.focused                 #cc5555 #cc5555  #111111
