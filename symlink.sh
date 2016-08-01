@@ -4,6 +4,8 @@ dirs_needed=(
 .i3
 .config/yabar
 .config/terminator
+.config/i3status
+.config/i3blocks
 )
 
 for dir in $dirs_needed; do
@@ -24,6 +26,12 @@ ln -s $dotfiles/compton/compton.conf $HOME/.compton.conf
 ln -s $dotfiles/i3/config $dotfiles/themer/templates/i3/i3.tpl
 ln -s $dotfiles/i3/i3status.conf $HOME/.i3status.conf
 
+# i3blocks
+ln -s $dotfiles/i3blocks/config $dotfiles/themer/templates/i3/i3blocks.tpl
+
+# i3status
+ln -s $dotfiles/i3status/config $dotfiles/themer/templates/i3/i3status.tpl
+
 # scripts - individually to allow host-specific scripts not in git
 for file in $dotfiles/bin/*; do
     ln -s $file $HOME/bin
@@ -39,6 +47,8 @@ ln -s $dotfiles/terminator/config $dotfiles/themer/templates/i3/terminator.tpl
 # themer
 [ ! -d $HOME/.config/themer ] && ln -s $dotfiles/themer $HOME/.config/themer
 ln -s $HOME/.config/themer/current/i3.conf $HOME/.i3/config
+ln -s $HOME/.config/themer/current/i3blocks.conf $HOME/.config/i3blocks/config
+ln -s $HOME/.config/themer/current/i3status.conf $HOME/.config/i3status/config
 ln -s $HOME/.config/themer/current/terminator.conf $HOME/.config/terminator/config
 ln -s $HOME/.config/themer/current/Xresources $HOME/.Xresources
 ln -s $HOME/.config/themer/current/yabar.conf $HOME/.config/yabar/yabar.conf

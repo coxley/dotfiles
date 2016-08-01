@@ -24,6 +24,7 @@ plugins:
 files:
    index.tpl: index.html
    i3.tpl: i3.conf
+   i3status.tpl: i3status.conf
    yabar.tpl: yabar.conf
    terminator.tpl: terminator.conf
    Xresources.tpl: Xresources
