@@ -434,8 +434,10 @@ nnoremap <silent> <Leader>tm :TableModeToggle
 " ####################
 
 let g:UltiSnipsExpandTrigger='<leader>.'
-let g:UltiSnipsJumpForwardTrigger='<leader>r'
-let g:UltiSnipsJumpBackwardTrigger='<leader>w'
+" let g:UltiSnipsJumpForwardTrigger='<leader>r'
+" let g:UltiSnipsJumpBackwardTrigger='<leader>w'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<c-tab>'
 
 nnoremap <leader>ue :UltiSnipsEdit<CR>
 
