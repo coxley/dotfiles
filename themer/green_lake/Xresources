@@ -1,0 +1,80 @@
+! Xft.dpi: 180
+! Xft.autohint: 0
+! Xft.lcdfilter: lcddefault
+! Xft.hintstyle: hintfull
+! Xft.hinting: 1
+! Xft.antialias: 1
+! Xft.rgba: rgb
+
+! Xft.dpi: 180
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 0
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!!!!!!!!!
+! Colors
+!!!!!!!!!
+
+! special
+*.foreground:  #ffffff
+*.background:  #0e0e0e
+
+! black
+*.color0:      #1f201a
+*.color8:      #3e5580
+
+! red
+*.color1:      #8aa09d
+*.color9:      #84a9c8
+
+! green
+*.color2:      #99a086
+*.color10:     #8fb2c8
+
+! yellow
+*.color3:      #4963a0
+*.color11:     #759dc8
+
+! blue
+*.color4:      #8ba069
+*.color12:     #c8bfbe
+
+! magenta
+*.color5:      #7f99a0
+*.color13:     #b3c8bc
+
+! cyan
+*.color6:      #5570a0
+*.color14:     #b7c8b5
+
+! white
+*.color7:      #97a08c
+*.color15:     #b3c879
+
+!!!!!!!
+! Rofi
+!!!!!!!
+
+! Window opacity
+rofi.opacity:                        100
+! Window width
+rofi.width:                          60
+! Number of lines
+rofi.lines:                          7
+! Number of columns
+rofi.columns:                        1
+! Font to use
+rofi.font:                           Hack 15
+
+
+rofi.color-enabled:                  true
+! Color scheme window
+rofi.color-window: argb:c336343f, argb:0e9dbdb, argb:0ef6155
+! Color scheme for normal row
+rofi.color-normal: argb:0191525,argb:dcffffff, argb:02f1e2e, argb:9a0e1c26, #7f99a0
+! Color scheme for active row
+rofi.color-active: argb:02f1e2e, #268bd2, argb:02f1e2e, #268bd2, #fdf6e3
+! Color scheme for urgent row
+rofi.color-urgent: argb:0fdf6e3, #dc322f, argb:0eee8d5, #dc322f, #fdf6e3

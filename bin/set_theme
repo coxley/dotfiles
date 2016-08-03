@@ -1,8 +1,11 @@
-# Randomly choose a wallpaper
-wallpaper_id=$(((RANDOM % 28) + 1))
+#!/bin/bash
+
+THEMER_DIR=~/.config/themer/
+
+rand_theme=$(ls -1 ${THEMER_DIR} | grep -v current\|templates | shuf -n1)
 
 # Load the corresponding theme with it (thanks to themer)
-themer render -a wallpaper$wallpaper_id
+themer render -a ${rand_theme}
 
 # Reload yabar
 # pkill yabar
