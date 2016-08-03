@@ -7,8 +7,6 @@ if has('nvim')
     " should try to refer to s:editor_root instead of ~/.vim where possible to
     " support this changing
     " let s:editor_root=expand("~/.nvim")
-    let g:python_host_skip_check=1
-    let g:loaded_python3_provider=1
     let s:editor_root=expand("~/.vim")
 else
     let s:editor_root=expand("~/.vim")
