@@ -445,3 +445,11 @@ let g:ultisnips_python_style="google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets"]
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
+" #########
+" Overrides
+" #########
+
+let override_file=s:editor_root . 'override.vim'
+if filereadable(override_file)
+    source override_file
+endif
