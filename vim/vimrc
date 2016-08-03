@@ -259,7 +259,6 @@ autocmd User GoyoLeave Limelight!
 " ######
 
 let python_highlight_all = 1
-let python_version_2 = 1
 
 " ##############
 " General Editor
