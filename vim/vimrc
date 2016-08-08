@@ -73,27 +73,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Syntax plugins
-Plugin 'neomake/neomake'
-Plugin 'markcornick/vim-vagrant'
-Plugin 'cespare/vim-toml'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'rodjek/vim-puppet'
 Plugin 'trapd00r/irc.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'ClockworkNet/vim-junos-syntax'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'nathanalderson/yang.vim'
-Plugin 'fatih/vim-go'
-Plugin 'hdima/python-syntax'
 Plugin 'mitsuhiko/vim-jinja'
-Plugin 'solarnz/thrift.vim'
+Plugin 'sheerun/vim-polyglot'
 
 " Color schemes
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 
 " Utility plugins
+Plugin 'neomake/neomake'
 Plugin 'coxley/codepad'
 Plugin 'keith/gist.vim'
 Plugin 'nvie/vim-flake8'
