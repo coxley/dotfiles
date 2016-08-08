@@ -111,7 +111,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
+" Plugin 'zchee/deoplete-jedi'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -376,8 +376,8 @@ let g:jedi#show_call_signatures = "2"
 
 autocmd FileType python setlocal completeopt-=preview
 
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#enable_cache = 1
+" let g:deoplete#sources#jedi#show_docstring = 1
+" let g:deoplete#sources#jedi#enable_cache = 1
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
