@@ -32,6 +32,9 @@ ln -s $dotfiles/i3blocks/config $dotfiles/themer/templates/i3/i3blocks.tpl
 # i3status
 ln -s $dotfiles/i3status/config $dotfiles/themer/templates/i3/i3status.tpl
 
+# ipython
+ln -s $dotfiles/ipython/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
+
 # scripts - individually to allow host-specific scripts not in git
 for file in $dotfiles/bin/*; do
     ln -s $file $HOME/bin
