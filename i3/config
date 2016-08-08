@@ -36,7 +36,7 @@ set $esc 0xff1b
 ######################
 
 # Set primary display to laptop
-exec xrandr --output eDP1 --primary
+# exec xrandr --output eDP1 --primary
 
 # Set preferred keyboard layout for X11
 exec setxkbmap dvorak
@@ -44,14 +44,8 @@ exec setxkbmap dvorak
 # Start notification server
 exec dunst
 
-# Composite manager (used for transparency)
-exec compton -b
-
 # Bar - not currently using
 # exec yabar
-
-# Wallpaper and theme
-exec ~/bin/set_theme
 
 # Taskbar applet for NetworkManager
 exec nm-applet
@@ -61,6 +55,9 @@ exec parcellite
 
 # Update Xresources
 exec xrdb -merge ~/.Xresources
+
+# Wallpaper and theme
+# exec ~/bin/set_theme
 
 ####################
 # Custom keybinding
@@ -226,12 +223,6 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
