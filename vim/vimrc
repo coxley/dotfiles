@@ -355,7 +355,22 @@ let g:colorizer_auto_filetype='css,html,javascript'
 " NeoMake
 " #######
 
-autocmd! BufWritePost * Neomake
+autocmd BufWritePost,BufEnter * Neomake
+
+"  distributed flake8 binary is custom and doesn't support the same flags
+let local_flake8='/home/coxley/.local/bin/flake8-upstream'
+if filereadable(local_flake8)
+let g:neomake_python_flake8_maker = {
+    \ 'exe': local_flake8,
+    \ 'args': ['--format=default'],
+    \ 'errorformat':
+        \ '%E%f:%l: could not compile,%-Z%p^,' .
+        \ '%A%f:%l:%c: %t%n %m,' .
+        \ '%A%f:%l: %t%n %m,' .
+        \ '%-G%.%#',
+    \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+    \ }
+endif
 
 " ########
 " Deoplete
