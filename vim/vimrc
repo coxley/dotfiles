@@ -371,6 +371,7 @@ let g:neomake_python_flake8_maker = {
     \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
     \ }
 endif
+let g:neomake_python_enabled_makers = ['flake8']
 
 " ########
 " Deoplete
