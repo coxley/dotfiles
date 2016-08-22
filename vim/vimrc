@@ -73,6 +73,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Syntax plugins
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'trapd00r/irc.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'ClockworkNet/vim-junos-syntax'
@@ -306,13 +307,8 @@ set ai si                       " Auto & smart indent
 set textwidth=79
 set formatoptions+=r            " Auto insert the current comment prefix
 set formatoptions+=q            " Allow formatting of comments with 'gq'
-set foldlevel=99                " za is to fold/unfold
 set ffs=unix,dos,mac            " prefer unix linefeed
 set pastetoggle=<f5>            " pressing f5 in insert mode will allow pasting
-
-set foldmethod=indent           " Enable code folding, indent works well python
-nnoremap <space> za
-vnoremap <space> zf
 
 " Maps <Leader>l to highlight current line
 " Entering :match will clear highlighting
@@ -492,3 +488,14 @@ let g:airline#extensions#tabline#enabled = 1
 
 colorscheme onedark
 let g:airline_theme='onedark'
+
+" ###########
+" SimplylFold
+" ###########
+
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 0
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+nnoremap <space> za
+vnoremap <space> zf
