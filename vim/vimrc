@@ -80,6 +80,7 @@ Plugin 'ClockworkNet/vim-junos-syntax'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'ekalinin/Dockerfile.vim'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -117,6 +118,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
+Plugin 'Yggdroot/indentLine'
 
 " Distraction free
 Plugin 'junegunn/goyo.vim'
@@ -499,3 +501,18 @@ let g:SimpylFold_fold_docstring = 0
 " autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 nnoremap <space> za
 vnoremap <space> zf
+
+" ##########
+" indentLine
+" ##########
+
+let g:indentLine_char = '┆'
+" let g:indentLine_char = '¦'
+" let g:indentLine_char = '|'
+
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
