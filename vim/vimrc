@@ -357,10 +357,10 @@ autocmd BufWritePost,BufEnter * Neomake
 
 "  distributed flake8 binary is custom and doesn't support the same flags
 let local_flake8='/home/coxley/.local/bin/flake8-upstream'
-if filereadable(local_flake8)
+if filereadable('~/fbcode')
 let g:neomake_python_flake8_maker = {
-    \ 'exe': local_flake8,
-    \ 'args': ['--format=default'],
+    \ 'exe': 'flake8',
+    \ 'args': ['--shebang'],
     \ 'errorformat':
         \ '%E%f:%l: could not compile,%-Z%p^,' .
         \ '%A%f:%l:%c: %t%n %m,' .
