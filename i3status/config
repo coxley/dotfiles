@@ -25,11 +25,10 @@ arch_updates {
 }
 
 xrandr {
-    force_on_start = "DP-2-2+DP-1"
-    DP-2-2_pos = "right-of eDP-1"
+    force_on_start = "DP-1+DP-2-2"
+    DP-2-2_pos = "left-of DP-1"
     DP-2-2_workspaces = "6: "
     DP-1_workspaces = "7: "
-    DP-1_pos = "right-of DP-2-2"
     fallback = "eDP-1"
     # force_on_start = "eDP1+HDMI2"
     # HDMI2_pos = "left-of eDP1"
