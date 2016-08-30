@@ -356,8 +356,7 @@ let g:colorizer_auto_filetype='css,html,javascript'
 autocmd BufWritePost,BufEnter * Neomake
 
 "  distributed flake8 binary is custom and doesn't support the same flags
-let local_flake8='/home/coxley/.local/bin/flake8-upstream'
-if isdirectory('~/fbcode')
+if filereadable('/etc/fbwhoami')
     let g:neomake_python_flake8_maker = {
         \ 'exe': 'flake8',
         \ 'args': ['--shebang'],
