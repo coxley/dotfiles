@@ -359,7 +359,7 @@ autocmd BufWritePost,BufEnter * Neomake
 "  distributed flake8 binary is custom and doesn't support the same flags
 if filereadable('/etc/fbwhoami')
     let g:neomake_python_flake8_maker = {
-        \ 'exe': 'flake8',
+        \ 'exe': '/usr/local/bin/flake8',
         \ 'args': ['--shebang'],
         \ 'errorformat':
             \ '%E%f:%l: could not compile,%-Z%p^,' .
