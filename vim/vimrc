@@ -529,3 +529,19 @@ let g:CommandTInputDebounce = 50
 let g:CommandTFileScanner = 'watchman'
 
 let g:CommandTSmartCase = 1
+
+" #####################
+" Relative Line Numbers
+" #####################
+" Line number stuff. Set both for hybrid
+set number
+function! NumberToggle()
+  if(&rnu == 1)
+      set nornu
+    set nu
+  elseif(&nu == 1)
+    set nonu
+    set rnu
+  endif
+endfunc
+nnoremap <leader>i :call NumberToggle()<cr>
