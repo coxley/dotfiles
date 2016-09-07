@@ -46,6 +46,7 @@ match OverLength /\%81v.\+/
 
 " No Highlight binding
 nnoremap <leader><leader>n :nohl<CR>
+nnoremap <leader>s :w<CR>
 
 " #######
 " Plugins
