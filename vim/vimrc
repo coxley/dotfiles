@@ -44,9 +44,11 @@ highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%81v.\+/
 
-" No Highlight binding
+" Bindings
 nnoremap <leader><leader>n :nohl<CR>
 nnoremap <leader>s :w<CR>
+nnoremap <CR> G
+nnoremap <BS> gg
 
 " #######
 " Plugins
@@ -121,6 +123,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 " Plugin 'Yggdroot/indentLine'
 Plugin 'wincent/command-t'
+Plugin 'terryma/vim-expand-region'
 
 " Distraction free
 Plugin 'junegunn/goyo.vim'
@@ -546,3 +549,9 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <leader>i :call NumberToggle()<cr>
+
+" #############
+" expand-region
+" #############
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
