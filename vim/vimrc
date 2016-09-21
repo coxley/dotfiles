@@ -107,6 +107,7 @@ Plugin 'kana/vim-fakeclip'
 Plugin 'jlfwong/vim-arcanist'
 Plugin 'phleet/vim-mercenary'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'tpope/vim-abolish'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
