@@ -124,7 +124,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 " Plugin 'Yggdroot/indentLine'
-Plugin 'wincent/command-t'
 Plugin 'terryma/vim-expand-region'
 
 " Distraction free
@@ -522,19 +521,6 @@ vnoremap <space> zf
 " " none X terminal
 " let g:indentLine_color_tty_light = 7 " (default: 4)
 " let g:indentLine_color_dark = 1 " (default: 2)
-
-" #########
-" Command-T
-" #########
-
-
-set wildignore+=*/buck-out,*/buckcache,*/third-party*,*/_bin
-let g:CommandTMaxFiles = 500000
-let g:CommandTMaxHeight = 15
-let g:CommandTInputDebounce = 50
-let g:CommandTFileScanner = 'watchman'
-
-let g:CommandTSmartCase = 1
 
 " #####################
 " Relative Line Numbers

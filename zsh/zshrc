@@ -50,6 +50,7 @@ fi
 
 [ -f ~/.fzf.zsh ] \
     || git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
-    && ~/.fzf/install
+    && ~/.fzf/install \
+    && ln -s ~/.fzf/fzf ~/.local/bin/
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
