@@ -20,6 +20,7 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
 let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python3.5/site-packages/powerline/bindings/vim/")
 let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.7/site-packages/powerline/bindings/vim/")
 let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.6/site-packages/powerline/bindings/vim/")
+set rtp+=~/.fzf
 
 " Disable compatibility mode
 set nocompatible
