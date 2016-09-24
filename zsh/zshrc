@@ -53,4 +53,6 @@ fi
     ~/.fzf/install \
     ln -s ~/.fzf/fzf ~/.local/bin/
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] \
+    && source ~/.fzf.zsh \
+    && _fzf_compgen_path() { ag -g "" "$1" }
