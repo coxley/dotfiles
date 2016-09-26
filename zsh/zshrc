@@ -48,6 +48,8 @@ fi
 [ -f ~/.zsh_post ] && source ~/.zsh_post
 [ -f ~/.zsh_theme ] && source ~/.zsh_theme
 
+# FZF
+
 [ -f ~/.fzf.zsh ] \
     || git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
     ~/.fzf/install \
@@ -57,4 +59,9 @@ fi
     && source ~/.fzf.zsh \
     && _fzf_compgen_path() { ag -g "" "$1" }
 
+export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='
+ --color=fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+ --color=info:108,prompt:109,spinner:108,pointer:168,marker:168
+'
