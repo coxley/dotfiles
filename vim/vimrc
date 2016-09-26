@@ -46,7 +46,9 @@ highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%81v.\+/
 
 " Bindings
-nnoremap <leader><leader>n :nohl<CR>
+nnoremap <leader><leader>n :match<CR>:nohl<CR>
+nnoremap <M-q> :q<CR>
+nnoremap <C-s> :w<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader><leader>s :Snippets<CR>
 nnoremap <leader>t :Files<CR>
@@ -55,6 +57,8 @@ nnoremap <CR> G
 nnoremap <BS> gg
 
 inoremap <leader><leader>s <Esc>:Snippets<CR>
+inoremap <C-s> <Esc>:w<CR>
+inoremap <leader>s <Esc>:w<CR>
 
 " #######
 " Plugins
