@@ -55,6 +55,13 @@ exec parcellite
 # Update Xresources
 exec xrdb -merge ~/.Xresources
 
+exec touchegg
+
+exec feh --bg-fill ~/.config/themer/current/wallpaper.jpg
+
+# Disable yubikey
+exec xinput-toggle -r yubikey -d
+
 # Wallpaper and theme
 # exec ~/bin/set_theme
 
@@ -80,6 +87,9 @@ bindsym $alt+p exec rofi -show run
 
 # Lock computer
 bindsym $alt+$esc exec ~/bin/lock_screen
+
+# Enable Yubikey for 10 seconds
+bindsym $win+l exec xinput-toggle -r yubikey -n -e -t 10
 
 # Scratchpad
 bindsym $win+Shift+minus move scratchpad
