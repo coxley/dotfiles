@@ -60,6 +60,17 @@ inoremap <leader><leader>s <Esc>:Snippets<CR>
 inoremap <C-s> <Esc>:w<CR>
 inoremap <leader>s <Esc>:w<CR>
 
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>gr <Plug>(go-rename)
+
 " #######
 " Plugins
 " #######
@@ -94,6 +105,7 @@ Plugin 'nathanalderson/yang.vim'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'fatih/vim-go'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -101,7 +113,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " Airline
-Plugin 'joshdick/airline-onedark.vim'
+" Plugin 'joshdick/airline-onedark.vim'
 Plugin 'vim-airline/vim-airline'
 
 " Utility plugins
