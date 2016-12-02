@@ -101,6 +101,8 @@ Plugin 'tomasr/molokai'
 Plugin 'joshdick/onedark.vim'
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'guns/xterm-color-table.vim'
+
 " Airline
 " Plugin 'joshdick/airline-onedark.vim'
 Plugin 'vim-airline/vim-airline'
