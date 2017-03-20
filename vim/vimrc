@@ -77,6 +77,22 @@ if !filereadable(vundle_readme)
     let vundle_installed=0
 endif
 
+let gocode_installed=0
+let homedir=expand("~/")
+if !filereadable(homedir . ".go/bin/gocode")
+    echo "Gocode not installed"
+    echo ""
+    echo "Attempting to run: go get -u github.com/nsf/gocode ..."
+    let output=system("go get -u github.com/nsf/gocode")
+    if v:shell_error != 0
+        let gocode_installed=1
+        echo "Failed installed gocode, please try to install"
+    endif
+    echo "Installed gocode!"
+else
+    let gocode_installed=1
+endif
+
 " Required for bug in Vundle - re-enable after plugin shit
 filetype plugin off
 
@@ -131,6 +147,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'Shougo/deoplete.nvim'
+" Vim go completion
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'zchee/deoplete-jedi'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
