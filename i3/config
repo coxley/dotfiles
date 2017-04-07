@@ -94,6 +94,8 @@ bindsym $win+l exec xinput-toggle -r yubikey -n -e -t 10
 # Scratchpad
 bindsym $win+Shift+minus move scratchpad
 bindsym $win+minus scratchpad show
+# Bind super+s to toggle spotify to/from scratchpad
+bindsym $win+s [class="Spotify.*"] scratchpad show
 bindsym $win+Shift+m move workspace to output left
 
 
