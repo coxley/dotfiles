@@ -51,7 +51,7 @@ nnoremap <M-q> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader><leader>s :Snippets<CR>
-nnoremap <leader>t :Files<CR>
+nnoremap <leader>t :vsplit term://zsh
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
