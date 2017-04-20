@@ -23,7 +23,7 @@ let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.6/site-pack
 set rtp+=~/.fzf
 
 if filereadable('/etc/fbwhoami')
-    nnoremap <silent> <Leader>t  :call fzf#run({'source': '~/bin/wm', 'sink': 'e'})<CR>
+    nnoremap <silent> <C-t> :call fzf#run({'source': '~/bin/wm', 'sink': 'e'})<CR>
 endif
 
 " Disable compatibility mode
