@@ -22,10 +22,6 @@ let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.7/site-pack
 let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.6/site-packages/powerline/bindings/vim/")
 set rtp+=~/.fzf
 
-if filereadable('/etc/fbwhoami')
-    nnoremap <silent> <C-t> :call fzf#run({'source': '~/bin/wm', 'sink': 'e'})<CR>
-endif
-
 " Disable compatibility mode
 set nocompatible
 
@@ -59,6 +55,9 @@ nnoremap <leader>t :vsplit term://zsh
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
+if filereadable('/etc/fbwhoami')
+    nnoremap <silent> <leader>n :call fzf#run({'source': '~/bin/wm', 'sink': 'e'})<CR>
+endif
 
 inoremap <leader><leader>s <Esc>:Snippets<CR>
 inoremap <C-s> <Esc>:w<CR>
