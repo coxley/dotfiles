@@ -51,7 +51,10 @@ nnoremap <M-q> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader><leader>s :Snippets<CR>
-nnoremap <leader>t :vsplit term://zsh
+nnoremap <leader>t :vsplit term://zsh<CR>
+nnoremap <leader>ba :ball<CR>
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
@@ -141,6 +144,7 @@ Plugin 'phleet/vim-mercenary'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tpope/vim-abolish'
 Plugin 'junegunn/fzf.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Powerhouse plugins
 Plugin 'Rykka/riv.vim'
