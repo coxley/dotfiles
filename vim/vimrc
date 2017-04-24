@@ -337,6 +337,7 @@ au FileType go nmap <Leader>gr <Plug>(go-rename)
 " ##############
 
 syntax on                       " enables syntax highlighting
+set mouse=a
 set hidden                      " multi-file behaviors
 set wildmenu                    " better cmd line completion
 set wildmode=list:longest       " more shell-like completion
