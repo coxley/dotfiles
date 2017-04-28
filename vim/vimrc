@@ -55,6 +55,9 @@ nnoremap <leader>t :vsplit term://zsh<CR>
 nnoremap <leader>ba :ball<CR>
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
+nnoremap <silent> || <C-w>v
+" -- to generate new vertical split
+nnoremap <silent> -- <C-w>h
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
