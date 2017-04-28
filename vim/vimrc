@@ -53,11 +53,11 @@ nnoremap <leader>s :w<CR>
 nnoremap <leader><leader>s :Snippets<CR>
 nnoremap <leader>t :vsplit term://zsh<CR>
 nnoremap <leader>ba :ball<CR>
-" vv to generate new vertical split
+" vv or || to generate new vertical split
 nnoremap <silent> vv <C-w>v
-nnoremap <silent> || <C-w>v
+nnoremap <silent> <Bar><Bar> <C-w>v
 " -- to generate new vertical split
-nnoremap <silent> -- <C-w>h
+nnoremap <silent> -- <C-w>n
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
