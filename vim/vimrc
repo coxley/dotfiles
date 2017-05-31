@@ -157,6 +157,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-go'
 " Vim go completion
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'zchee/deoplete-jedi'
@@ -450,6 +451,10 @@ let g:neomake_python_enabled_makers = ['flake8']
 " Deoplete
 " ########
 
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+set completeopt+=noselect
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#enable_smart_case = 1
@@ -462,7 +467,6 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "2"
 
 
-
 autocmd FileType python setlocal completeopt-=preview
 
 " let g:deoplete#sources#jedi#show_docstring = 1
@@ -472,7 +476,9 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:jedi#completions_enabled = 1
+
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " #########
 " Clipboard
