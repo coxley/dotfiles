@@ -438,6 +438,16 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+" Because flake8-mypy will call mypy anyway
+let g:ale_linters = {
+\    'python': ['flake8', 'isort', 'pylint'],
+\}
+
+if filereadable('/etc/fbwhoami')
+    let g:ale_python_flake8_executable = '/usr/local/bin/flake8'
+    let g:ale_python_flake8_args = '--shebang'
+endif
+
 " ########
 " Deoplete
 " ########
