@@ -433,6 +433,11 @@ let g:colorizer_auto_filetype='css,html,javascript'
 "
 let g:airline#extensions#ale#enabled = 1
 
+" Better error string
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 " ########
 " Deoplete
 " ########
