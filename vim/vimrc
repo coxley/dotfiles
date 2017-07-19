@@ -133,7 +133,8 @@ Plugin 'guns/xterm-color-table.vim'
 Plugin 'vim-airline/vim-airline'
 
 " Utility plugins
-Plugin 'neomake/neomake'
+" Plugin 'neomake/neomake'
+Plugin 'w0rp/ale'
 Plugin 'coxley/codepad'
 Plugin 'keith/gist.vim'
 Plugin 'nvie/vim-flake8'
@@ -427,25 +428,10 @@ let g:vim_markdown_frontmatter=1
 let g:colorizer_auto_filetype='css,html,javascript'
 
 " #######
-" NeoMake
+" ALE
 " #######
-
-autocmd BufWritePost,BufEnter * Neomake
-
-"  distributed flake8 binary is custom and doesn't support the same flags
-if filereadable('/etc/fbwhoami')
-    let g:neomake_python_flake8_maker = {
-        \ 'exe': '/usr/local/bin/flake8',
-        \ 'args': ['--shebang'],
-        \ 'errorformat':
-            \ '%E%f:%l: could not compile,%-Z%p^,' .
-            \ '%A%f:%l:%c: %t%n %m,' .
-            \ '%A%f:%l: %t%n %m,' .
-            \ '%-G%.%#',
-        \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
-        \ }
-endif
-let g:neomake_python_enabled_makers = ['flake8']
+"
+let g:airline#extensions#ale#enabled = 1
 
 " ########
 " Deoplete

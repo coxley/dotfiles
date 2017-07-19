@@ -22,8 +22,9 @@ plugins:
       - yabar_rgb_value.yabar_color_fix
       - set_wallpaper.SetWallpaper
 files:
-   index.tpl: index.html
+   colors.tpl: colors.sh
    i3.tpl: i3.conf
+   index.tpl: index.html
    i3status.tpl: i3status.conf
    yabar.tpl: yabar.conf
    terminator.tpl: terminator.conf
