@@ -69,6 +69,10 @@ inoremap <leader><leader>s <Esc>:Snippets<CR>
 inoremap <C-s> <Esc>:w<CR>
 inoremap <leader>s <Esc>:w<CR>
 
+" ALE
+nnoremap <leader>en :ALENextWrap<CR>
+nnoremap <leader>ep :ALELastWrap<CR>
+
 " #######
 " Plugins
 " #######
