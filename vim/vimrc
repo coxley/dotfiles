@@ -444,7 +444,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
 if filereadable('/etc/fbwhoami')
-    let g:ale_python_flake8_executable = '/home/coxley/bin/stripped_flake8'
+    let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
     let g:ale_python_flake8_args = '--shebang'
     let g:ale_linters = {
     \    'python': ['flake8', 'isort', 'pylint'],
