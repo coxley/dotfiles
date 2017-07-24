@@ -78,10 +78,10 @@ volume master {
     mixer = "Master"
     mixer_idx = 0
     on_click 1 = "exec pavucontrol"
-    on_click 2 = "exec pactl set-sink-mute 2 toggle"
+    on_click 2 = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle"
     on_click 3 = "exec killall pavucontrol"
-    on_click 4 = "exec pactl set-sink-volume 2 +1%"
-    on_click 5 = "exec pactl set-sink-volume 2 -1%"
+    on_click 4 = "exec pactl set-sink-volume @DEFAULT_SINK@ +1%"
+    on_click 5 = "exec pactl set-sink-volume @DEFAULT_SINK@ -1%"
 }
 
 spotify {
