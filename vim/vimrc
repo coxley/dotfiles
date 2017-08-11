@@ -282,6 +282,7 @@ let g:NERDTreeIgnore = ['\.pyc$']
 " Close vim if NERDTree is the only window open and auto open for every tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd BufWinEnter * NERDTreeMirror
+autocmd BufEnter * EnableStripWhitespaceOnSave
 
 " ###############
 " Phabricator/Arc
