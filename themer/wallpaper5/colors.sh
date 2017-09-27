@@ -1,5 +1,6 @@
 #!/bin/bash
 # colors.sh - generated palette
+set -a
 foreground=#ffffff
 background=#0e0e0e
 color0=#20160c

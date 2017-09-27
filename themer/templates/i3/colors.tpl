@@ -1,5 +1,6 @@
 #!/bin/bash
 # colors.sh - generated palette
+set -a
 foreground={{ foreground }}
 background={{ background }}
 color0={{ black }}

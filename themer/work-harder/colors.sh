@@ -1,0 +1,39 @@
+#!/bin/bash
+# colors.sh - generated palette
+set -a
+foreground=#ffffff
+background=#0e0e0e
+color0=#20140f
+color1=#dd3716
+color2=#e07356
+color3=#b1835a
+color4=#d67526
+color5=#a03013
+color6=#a06e42
+color7=#a52e12
+color8=#803a20
+color9=#e3cc98
+color10=#f8dfa6
+color11=#c84e1e
+color12=#f0d7a1
+color13=#c8834b
+color14=#f6bb8b
+color15=#fa8563
+colors=(
+  ${color0}
+  ${color1}
+  ${color2}
+  ${color3}
+  ${color4}
+  ${color5}
+  ${color6}
+  ${color7}
+  ${color8}
+  ${color9}
+  ${color10}
+  ${color11}
+  ${color12}
+  ${color13}
+  ${color14}
+  ${color15}
+)

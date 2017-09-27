@@ -65,6 +65,8 @@ exec feh --bg-fill ~/.config/themer/current/wallpaper.jpg
 # Disable yubikey
 exec xinput-toggle -r yubikey -d
 
+exec ~/bin/setup_autolock.sh
+
 # Wallpaper and theme
 # exec ~/bin/set_theme
 

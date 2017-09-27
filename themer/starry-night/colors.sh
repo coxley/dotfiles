@@ -1,23 +1,24 @@
 #!/bin/bash
 # colors.sh - generated palette
-foreground={{ foreground }}
-background={{ background }}
-color0={{ black }}
-color1={{ red }}
-color2={{ green }}
-color3={{ yellow }}
-color4={{ blue }}
-color5={{ magenta }}
-color6={{ cyan }}
-color7={{ white }}
-color8={{ alt_black }}
-color9={{ alt_red }}
-color10={{ alt_green }}
-color11={{ alt_yellow }}
-color12={{ alt_blue }}
-color13={{ alt_magenta }}
-color14={{ alt_cyan }}
-color15={{ alt_white }}
+set -a
+foreground=#ffffff
+background=#0e0e0e
+color0=#201d18
+color1=#8a96a0
+color2=#7088a0
+color3=#b09d8b
+color4=#a0a0a0
+color5=#284fa0
+color6=#687da0
+color7=#8b97a0
+color8=#1c3880
+color9=#c0c8c4
+color10=#2e6bc8
+color11=#4081c8
+color12=#c8b39a
+color13=#9aaec8
+color14=#a3bac8
+color15=#c8b19d
 colors=(
   ${color0}
   ${color1}
