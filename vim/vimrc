@@ -208,6 +208,10 @@ au BufRead,BufNewFile *go set noexpandtab
 au BufRead,BufNewFile *.cconf set filetype=python
 au BufRead,BufNewFile *.cinc set filetype=python
 au BufRead,BufNewFile TARGETS set filetype=python
+if filereadable('/etc/fbwhoami')
+    " Autofmt TARGETS files
+    autocmd BufWritePost TARGETS silent! exec "!~/bin/buckfmt -i %" | :e
+endif
 
 au BufRead,BufNewFile *.thrift set filetype=thrift
 
