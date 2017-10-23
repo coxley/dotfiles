@@ -62,7 +62,7 @@ nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
 if filereadable('/etc/fbwhoami')
-    nnoremap <silent> <leader>n :call fzf#run({'source': '~coxley/bin/wm', 'sink': 'e'})<CR>
+    nnoremap <silent> <leader>n :call fzf#run({'source': '~/nfs/bin/wm', 'sink': 'e'})<CR>
 endif
 
 inoremap <leader><leader>s <Esc>:Snippets<CR>
