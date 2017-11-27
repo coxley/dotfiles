@@ -231,7 +231,7 @@ for_window [window_role="pop-up"] floating enable,move absolute center
 # Font
 #######
 
-font pango:Source Code Pro, Awesome 12
+font pango:Source Code Pro, Awesome 14px
 # font pango:Source Code Pro, Awesome 15
 
 mode "resize" {
@@ -281,11 +281,11 @@ client.placeholder      #000000  #0c0c0c  #ffffff #000000    #0c0c0c
 client.background       #ffffff
 
 bar {
-    status_command py3status -c ~/.config/i3status/config
+    status_command /home/coxley/.local/bin/py3status -c ~/.config/i3status/config
     tray_output primary
     position bottom
     mode dock
-    font pango:Source Code Pro, Awesome 12
+    font pango:Source Code Pro for Powerline, Awesome 11
 
     colors {
         statusline      $foreground
