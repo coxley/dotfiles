@@ -137,13 +137,13 @@
     startup_notification = false
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/google-chrome-stable
 
     # Align icons left/right/off
-    icon_position = left
+    icon_position = off
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -171,7 +171,7 @@
     history = ctrl+grave
 
     # Context menu.
-    context = ctrl+shift+period
+    context = ctrl+shift+backslash
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
