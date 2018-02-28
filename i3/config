@@ -43,6 +43,9 @@ exec setxkbmap dvorak
 # Start notification server
 exec dunst
 
+# Autokey exansion
+exec autokey-gtk
+
 # Bar - not currently using
 # exec yabar
 

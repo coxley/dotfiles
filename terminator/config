@@ -5,6 +5,7 @@
   suppress_multiple_term_dialog = True
 [keybindings]
   switch_to_tab_10 = None
+  group_all = None
   new_tab = <Shift>Down
   next_tab = <Shift>Right
   move_tab_right = <Primary>Right
