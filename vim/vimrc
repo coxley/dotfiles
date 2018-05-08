@@ -211,7 +211,7 @@ au BufRead,BufNewFile *.cconf set filetype=python
 au BufRead,BufNewFile *.cinc set filetype=python
 au BufRead,BufNewFile TARGETS set filetype=python
 if filereadable('/etc/fbwhoami')
-    let g:python3_host_prog='/home/coxley/bin/python3'
+    let g:python3_host_prog='/home/coxley/virtualenvs/neovim/bin/python'
     " Autofmt TARGETS files
     autocmd BufWritePost TARGETS silent! exec "!~/bin/buckfmt -i %" | :e
 endif
