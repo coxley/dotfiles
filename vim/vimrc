@@ -209,6 +209,7 @@ au BufRead,BufNewFile *go set noexpandtab
 
 au BufRead,BufNewFile *.cconf set filetype=python
 au BufRead,BufNewFile *.cinc set filetype=python
+au BufRead,BufNewFile *.tw set filetype=python
 au BufRead,BufNewFile TARGETS set filetype=python
 if filereadable('/etc/fbwhoami')
     let g:python3_host_prog='/home/coxley/virtualenvs/neovim/bin/python'
@@ -220,6 +221,7 @@ endif
 autocmd BufWritePost *.py silent! :Black
 autocmd BufWritePost *.cinc silent! :Black
 autocmd BufWritePost *.cconf silent! :Black
+autocmd BufWritePost *.tw silent! :Black
 
 au BufRead,BufNewFile *.thrift set filetype=thrift
 
