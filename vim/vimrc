@@ -217,6 +217,10 @@ if filereadable('/etc/fbwhoami')
     autocmd BufWritePost TARGETS silent! exec "!~/bin/buckfmt -i %" | :e
 endif
 
+autocmd BufWritePost *.py silent! :Black
+autocmd BufWritePost *.cinc silent! :Black
+autocmd BufWritePost *.cconf silent! :Black
+
 au BufRead,BufNewFile *.thrift set filetype=thrift
 
 " ##############
