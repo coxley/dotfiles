@@ -40,11 +40,11 @@ set listchars=tab:\▸\ ,precedes:<,extends:>
 "     set t_ut=
 " endif
 
-" Create wall of highlight passed 80 characters and highlight text
-let &colorcolumn=join(range(81,999),",")
+" Create wall of highlight passed 89 characters and highlight text
+let &colorcolumn=join(range(89,999),",")
 highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
-match OverLength /\%81v.\+/
+match OverLength /\%89v.\+/
 
 " Bindings
 nnoremap <leader><leader>n :match<CR>:nohl<CR>
