@@ -461,6 +461,11 @@ let g:ale_linters = {
 \    'go': ['gometalinter', 'go vet'],
 \}
 
+let g:ale_fixers = {
+\   'python': ['isort'],
+\}
+
+let g:ale_fix_on_save = 1
 
 if filereadable('/etc/fbwhoami')
     let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
