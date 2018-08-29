@@ -212,7 +212,7 @@ au BufRead,BufNewFile *.yml set ts=2 sw=2 sts=2 expandtab ft=yaml
 au BufRead,BufNewFile *.cconf set filetype=python
 au BufRead,BufNewFile *.cinc set filetype=python
 au BufRead,BufNewFile *.tw set filetype=python
-au BufRead,BufNewFile TARGETS set filetype=python
+au BufRead,BufNewFile TARGETS set filetype=bzl
 if filereadable('/etc/fbwhoami')
     let g:python3_host_prog='/home/coxley/virtualenvs/neovim/bin/python'
     let g:python_host_prog='/home/coxley/virtualenvs/neovim2/bin/python'
