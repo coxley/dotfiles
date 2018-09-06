@@ -27,5 +27,6 @@ files:
    index.tpl: index.html
    i3status.tpl: i3status.conf
    yabar.tpl: yabar.conf
+   polybar.tpl: polybar.conf
    terminator.tpl: terminator.conf
    Xresources.tpl: Xresources

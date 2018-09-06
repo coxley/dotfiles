@@ -94,7 +94,7 @@ bindsym XF86AudioMute exec pactl set-sink-volume toggle
 # bindsym $alt+p exec rofi -show run
 
 # Lock computer
-bindsym $alt+$esc exec ~/bin/lock_screen
+bindsym $alt+$esc exec /usr/bin/betterlockscreen -l
 
 # Enable Yubikey for 10 seconds
 bindsym $win+l exec xinput-toggle -r yubikey -n -e -t 10
