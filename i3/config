@@ -46,6 +46,9 @@ exec dunst
 # Autokey exansion
 exec autokey-gtk
 
+# Compositor
+exec --no-startup-id compton
+
 # Bar - not currently using
 # exec yabar
 
