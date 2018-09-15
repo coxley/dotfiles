@@ -129,6 +129,7 @@ Plugin 'fatih/vim-go'
 " Color schemes
 Plugin 'tomasr/molokai'
 Plugin 'joshdick/onedark.vim'
+Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'guns/xterm-color-table.vim'
@@ -136,6 +137,7 @@ Plugin 'guns/xterm-color-table.vim'
 " Airline
 " Plugin 'joshdick/airline-onedark.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Utility plugins
 " Plugin 'neomake/neomake'
@@ -598,8 +600,11 @@ let g:airline#extensions#tabline#enabled = 1
 "   set termguicolors
 " endif
 
-colorscheme onedark
-let g:airline_theme='onedark'
+" colorscheme onedark
+" let g:airline_theme='onedark'
+set background=dark
+colorscheme palenight
+let g:airline_theme = "hybrid"
 
 " ###########
 " SimplylFold

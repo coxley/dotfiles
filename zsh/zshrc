@@ -62,6 +62,10 @@ fi
     && source ~/.fzf.zsh \
     && _fzf_compgen_path() { ag -g "" "$1" }
 
+[ -f /usr/bin/wal ] \
+    && (cat ~/.cache/wal/sequences &) \
+    && source ~/.cache/wal/colors-tty.sh
+
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='
