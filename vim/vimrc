@@ -192,24 +192,6 @@ filetype plugin indent on
 "     set t_ut=
 " endif
 "
-" ######
-" Colors
-" ######
-
-set background=dark
-colorscheme palenight
-let g:airline_theme = "hybrid"
-"
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-
-" Create wall of highlight passed 89 characters and highlight text
-let &colorcolumn=join(range(89,999),",")
-highlight colorcolumn ctermbg=235 guibg=#2c2d27
-highlight OverLength ctermbg=white ctermfg=red
-match OverLength /\%89v.\+/
-highlight Search ctermbg='NONE' ctermfg=226
 
 " #########
 " Filetypes
@@ -635,3 +617,24 @@ nnoremap <leader>i :call NumberToggle()<cr>
 " #############
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" ######
+" Colors
+" ######
+
+set background=dark
+colorscheme palenight
+let g:airline_theme = "hybrid"
+"
+if filereadable('/etc/fbwhoami')
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+endif
+
+" Create wall of highlight passed 89 characters and highlight text
+let &colorcolumn=join(range(89,999),",")
+highlight colorcolumn ctermbg=235 guibg=#2c2d27
+highlight OverLength ctermbg=white ctermfg=red
+match OverLength /\%89v.\+/
+highlight Search ctermbg='NONE' ctermfg=226
