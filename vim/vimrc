@@ -33,19 +33,6 @@ inoremap hh <Esc>
 set listchars=tab:\▸\ ,precedes:<,extends:>
 " set listchars=tab:\»\ ,
 
-" Disable Background Color Erase (BCE) so that color schemes
-" work properly when Vim is used inside tmux and GNU screen.
-
-" if &term =~ '256color'
-"     set t_ut=
-" endif
-
-" Create wall of highlight passed 89 characters and highlight text
-let &colorcolumn=join(range(89,999),",")
-highlight colorcolumn ctermbg=235 guibg=#2c2d27
-highlight OverLength ctermbg=white ctermfg=red
-match OverLength /\%89v.\+/
-
 " Bindings
 nnoremap <leader><leader>n :match<CR>:nohl<CR>
 nnoremap <M-q> :q<CR>
@@ -197,6 +184,32 @@ endif
 
 call vundle#end()
 filetype plugin indent on
+
+" Disable Background Color Erase (BCE) so that color schemes
+" work properly when Vim is used inside tmux and GNU screen.
+
+" if &term =~ '256color'
+"     set t_ut=
+" endif
+"
+" ######
+" Colors
+" ######
+
+set background=dark
+colorscheme palenight
+let g:airline_theme = "hybrid"
+"
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+
+" Create wall of highlight passed 89 characters and highlight text
+let &colorcolumn=join(range(89,999),",")
+highlight colorcolumn ctermbg=235 guibg=#2c2d27
+highlight OverLength ctermbg=white ctermfg=red
+match OverLength /\%89v.\+/
+highlight Search ctermbg='NONE' ctermfg=226
 
 " #########
 " Filetypes
@@ -425,14 +438,6 @@ set undolevels=1000             " 1000 undo levels
 
 nnoremap <F4> :GundoToggle<CR>
 
-" ######
-" Colors
-" ######
-
-" set t_Co=256
-" colorscheme molokai
-highlight Search ctermbg='NONE' ctermfg=226
-
 " ########
 " Markdown
 " ########
@@ -582,29 +587,6 @@ endif
 " #######
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
-
-" ####################
-" One Dark Colorscheme
-" ####################
-
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.  If you're using
-"tmux version 2.2 or later, you can remove the outermost $TMUX check and use
-"tmux's 24-bit color support (see <
-"http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-" if (has("nvim"))
-"   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" endif
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-
-" colorscheme onedark
-" let g:airline_theme='onedark'
-set background=dark
-colorscheme palenight
-let g:airline_theme = "hybrid"
 
 " ###########
 " SimplylFold

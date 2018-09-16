@@ -1,57 +1,57 @@
-! Xft.dpi: 180
-! Xft.autohint: 0
-! Xft.lcdfilter: lcddefault
-! Xft.hintstyle: hintfull
-! Xft.hinting: 1
-! Xft.antialias: 1
-! Xft.rgba: rgb
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
 
-! Xft.dpi: 180
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting: 0
-Xft.antialias: 1
-Xft.rgba: rgb
+URxvt.cursorBlink: true
 
-!!!!!!!!!
-! Colors
-!!!!!!!!!
+URxvt*transparent: true
+URxvt*shading: 20
 
-! special
-*.foreground:  #ffffff
-*.background:  #0e0e0e
+URxvt.font: xft:Source Code Pro for Powerline:pixelsize=12,InconsolataForPowerline Nerd Font:pixelsize=12,xft:Noto Emoji
+URxvt.letterSpace: 0
 
+! URxvt.font: -misc-font awesome 5 free-medium-r-normal--0-0-0-0-p-0-iso10646-1
+! *faceName: inconsolata, font-awesome
+
+
+! Perl extensions
+URxvt.perl-ext-common: default,clipboard,matcher,font-size
+URxvt.matcher.button: 1
+URxvt.urlLauncher: google-chrome
+
+URxvt.keysym.C-Plus: perl:font-size:increase
+URxvt.keysym.C-Minus: perl:font-size:decrease
+URxvt.keysym.C-M-Plus: perl:font-size:incglobal
+URxvt.keysym.C-M-Minus: perl:font-size:decglobal
+
+
+! special colors
+*.foreground:  #c0c5ce
+*.background:  #2b303b
+*.cursorColor:  #c0c5ce
 ! black
-*.color0:      #20110B
-*.color8:      #804D35
-
+*.color0:      #2b303b
+*.color8:      #65737e
 ! red
-*.color1:      #8E99A0
-*.color9:      #C8855E
-
+*.color1:      #bf616a
+*.color9:      #bf616a
 ! green
-*.color2:      #97A09B
-*.color10:     #E4E2D8
-
+*.color2:      #a3be8c
+*.color10:     #a3be8c
 ! yellow
-*.color3:      #92A09C
-*.color11:     #C8C4BC
-
+*.color3:      #ebcb8b
+*.color11:     #ebcb8b
 ! blue
-*.color4:      #A06245
-*.color12:     #C87451
-
+*.color4:      #8fa1b3
+*.color12:     #8fa1b3
 ! magenta
-*.color5:      #A05B3F
-*.color13:     #C88960
-
+*.color5:      #b48ead
+*.color13:     #b48ead
 ! cyan
-*.color6:      #A06464
-*.color14:     #C8835C
-
+*.color6:      #96b5b4
+*.color14:     #96b5b4
 ! white
-*.color7:      #A04E36
-*.color15:     #C87F5A
+*.color7:      #c0c5ce
+*.color15:     #eff1f5
 
 !!!!!!!
 ! Rofi

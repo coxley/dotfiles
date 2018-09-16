@@ -1,3 +1,4 @@
+# palette = "{ black }:{ red }:{ green }:{ yellow }:{ blue }:{ magenta }:{ cyan }:{ white }:{ alt_black }:{ alt_red }:{ alt_green }:{ alt_yellow }:{ alt_blue }:{ alt_magenta }:{ alt_cyan }:{ alt_white }"
 [global_config]
   enabled_plugins = FBTasksURLHandler, FBPhabricatorURLHandler, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   tab_position = hidden
@@ -21,15 +22,15 @@
 [profiles]
   [[default]]
     allow_bold = False
-    background_color = "{{ background }}"
-    background_darkness = 0.77
+    background_color = "#212121"
+    background_darkness = 0.85
     background_image = None
     background_type = transparent
-    cursor_shape = underline
+    cursor_color = "#EEFFFF"
     font = Source Code Pro for Powerline Medium 9
-    foreground_color = "{{ foreground }}"
+    foreground_color = "#EEFFFF"
     icon_bell = False
-    palette = "{{ black }}:{{ red }}:{{ green }}:{{ yellow }}:{{ blue }}:{{ magenta }}:{{ cyan }}:{{ white }}:{{ alt_black }}:{{ alt_red }}:{{ alt_green }}:{{ alt_yellow }}:{{ alt_blue }}:{{ alt_magenta }}:{{ alt_cyan }}:{{ alt_white }}"
+    palette = "#212121:#F07178:#C3E88D:#FFCB6B:#82AAFF:#C792EA:#89DDFF:#EEFFFF:#4A4A4A:#F07178:#C3E88D:#FFCB6B:#82AAFF:#C792EA:#89DDFF:#FFFFFF"
     scrollback_lines = 10000
     scrollbar_position = hidden
     show_titlebar = False

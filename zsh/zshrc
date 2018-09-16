@@ -64,6 +64,7 @@ fi
 
 [ -f /usr/bin/wal ] \
     && (cat ~/.cache/wal/sequences &) \
+    && clear \
     && source ~/.cache/wal/colors-tty.sh
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
