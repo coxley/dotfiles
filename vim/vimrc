@@ -207,6 +207,7 @@ au BufRead,BufNewFile *.yaml set ts=2 sw=2 sts=2 expandtab ft=yaml
 au BufRead,BufNewFile *.yml set ts=2 sw=2 sts=2 expandtab ft=yaml
 
 au BufRead,BufNewFile *.cconf set filetype=python
+au BufRead,BufNewFile *.mcconf set filetype=python
 au BufRead,BufNewFile *.cinc set filetype=python
 au BufRead,BufNewFile *.tw set filetype=python
 au BufRead,BufNewFile TARGETS set filetype=bzl

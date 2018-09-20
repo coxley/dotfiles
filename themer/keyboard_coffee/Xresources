@@ -6,7 +6,8 @@ URxvt.cursorBlink: true
 URxvt*transparent: true
 URxvt*shading: 20
 
-URxvt.font: xft:Source Code Pro for Powerline:pixelsize=12,InconsolataForPowerline Nerd Font:pixelsize=12,xft:Noto Emoji
+! URxvt.font: xft:Source Code Pro for Powerline:pixelsize=12,InconsolataForPowerline Nerd Font:pixelsize=12,xft:Noto Emoji
+URxvt.font: xft:SauceCodePro Nerd Font:pixelsize=12,InconsolataForPowerline Nerd Font:pixelsize=12,xft:Noto Emoji
 URxvt.letterSpace: 0
 
 ! URxvt.font: -misc-font awesome 5 free-medium-r-normal--0-0-0-0-p-0-iso10646-1
