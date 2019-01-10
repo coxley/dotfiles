@@ -146,6 +146,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 
 " Powerhouse plugins
+Plugin 'rhysd/vim-grammarous'
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/InstantRst'
 Plugin 'sjl/gundo.vim'
@@ -618,6 +619,29 @@ nnoremap <leader>i :call NumberToggle()<cr>
 " #############
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" ##############
+" vim-grammarous
+" ##############
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0,
+            \ }
+
+let g:grammarous#enabled_rules = {'*' : ['PASSIVE_VOICE']}
+let g:grammarous#hooks = {}
+
+" <C-n> | <C-p> for navigating errors post-check
+function! g:grammarous#hooks.on_check(errs) abort
+    nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)
+    nmap <buffer><C-p> <Plug>(grammarous-move-to-previous-error)
+endfunction
+
+function! g:grammarous#hooks.on_reset(errs) abort
+    nunmap <buffer><C-n>
+    nunmap <buffer><C-p>
+endfunction
+
+
 
 " ######
 " Colors
