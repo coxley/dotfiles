@@ -626,8 +626,15 @@ vmap <C-v> <Plug>(expand_region_shrink)
 "
 autocmd BufWritePost * silent! :GrammarousCheck
 let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0, 'vimrc' : 0,
+            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0,
             \ }
+
+let g:grammarous#disabled_rules = {
+            \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES'],
+            \ 'help' : ['WHITESPACE_RULE', 'EN_QUOTES', 'SENTENCE_WHITESPACE', 'UPPERCASE_SENTENCE_START'],
+            \ 'rst' : ['DOUBLE_PUNCTUATION', 'UNPAIRED_BRACKETS'],
+            \ }
+
 
 " <C-n> | <C-p> for navigating errors post-check
 let g:grammarous#hooks = {}
