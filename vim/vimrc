@@ -623,22 +623,28 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " ##############
 " vim-grammarous
 " ##############
+"
+autocmd BufWritePost * silent! :GrammarousCheck
 let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0,
+            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0, 'vimrc' : 0,
             \ }
 
-let g:grammarous#enabled_rules = {'*' : ['PASSIVE_VOICE']}
-let g:grammarous#hooks = {}
-
 " <C-n> | <C-p> for navigating errors post-check
+let g:grammarous#hooks = {}
 function! g:grammarous#hooks.on_check(errs) abort
     nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)
     nmap <buffer><C-p> <Plug>(grammarous-move-to-previous-error)
+    nmap <buffer><C-f> <Plug>(grammarous-fixit)
+    nmap <buffer><C-i> <Plug>(grammarous-open-info-window)
+    nmap <buffer><leader>gF <Plug>(grammarous-fixall)
 endfunction
 
 function! g:grammarous#hooks.on_reset(errs) abort
     nunmap <buffer><C-n>
     nunmap <buffer><C-p>
+    nunmap <buffer><C-f>
+    nunmap <buffer><C-i>
+    nunmap <buffer><leader>gF
 endfunction
 
 
