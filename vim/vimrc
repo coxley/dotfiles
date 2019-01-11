@@ -633,6 +633,14 @@ let g:grammarous#disabled_rules = {
             \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES'],
             \ 'help' : ['WHITESPACE_RULE', 'EN_QUOTES', 'SENTENCE_WHITESPACE', 'UPPERCASE_SENTENCE_START'],
             \ 'rst' : ['DOUBLE_PUNCTUATION', 'UNPAIRED_BRACKETS'],
+            \ 'markdown' : ['DOUBLE_PUNCTUATION', 'UNPAIRED_BRACKETS'],
+            \ }
+
+let g:grammarous#disabled_categories = {
+            \ '*' : ['PUNCTUATION'],
+            \ 'help' : ['PUNCTUATION', 'TYPOGRAPHY'],
+            \ 'markdown' : ['PUNCTUATION', 'TYPOGRAPHY'],
+            \ 'rst' : ['PUNCTUATION', 'TYPOGRAPHY'],
             \ }
 
 
