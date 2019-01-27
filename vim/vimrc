@@ -104,6 +104,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Syntax plugins
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'gabrielelana/vim-markdown'
 Plugin 'trapd00r/irc.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'ClockworkNet/vim-junos-syntax'
