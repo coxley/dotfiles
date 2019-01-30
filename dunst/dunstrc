@@ -137,7 +137,7 @@
     startup_notification = false
 
     # dmenu path.
-    dmenu = /bin/dmenu -p dunst:
+    # dmenu = /bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/google-chrome-stable

@@ -625,7 +625,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " vim-grammarous
 " ##############
 "
-autocmd BufWritePost * silent! :GrammarousCheck
+" autocmd BufWritePost * silent! :GrammarousCheck
 let g:grammarous#default_comments_only_filetypes = {
             \ '*' : 1, 'help' : 0, 'markdown' : 0, 'rst' : 0,
             \ }
