@@ -57,6 +57,8 @@ inoremap <leader><leader>s <Esc>:Snippets<CR>
 inoremap <C-s> <Esc>:w<CR>
 inoremap <leader>s <Esc>:w<CR>
 
+vmap Y y']
+
 " ALE
 nnoremap <leader>en :ALENextWrap<CR>
 nnoremap <leader>ep :ALELastWrap<CR>
@@ -462,8 +464,9 @@ let g:ale_linters = {
 if filereadable('/etc/fbwhoami')
     let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
     let g:ale_python_flake8_options = '--shebang --config /data/users/coxley/fbsource/fbcode/.flake8'
+    " \    'python': ['flake8', 'pylint'],
     let g:ale_linters = {
-    \    'python': ['flake8', 'pylint'],
+    \    'python': ['flake8'],
     \    'go': ['gometalinter', 'go vet'],
     \}
 endif
