@@ -42,6 +42,21 @@ if ! zgen-saved; then
     zgen save
 fi
 
+# Theme Options
+# Overiwrite SCM utilities for speed
+setopt PROMPT_SUBST
+spaceship_hg_branch() {
+  [[ $SPACESHIP_HG_BRANCH_SHOW == false ]] && return
+
+  spaceship::is_hg || return
+
+  spaceship::section \
+    "$SPACESHIP_HG_BRANCH_COLOR" \
+    "$SPACESHIP_HG_BRANCH_PREFIX" \
+    "$(_dotfiles_scm_info)" \
+    "$SPACESHIP_HG_BRANCH_SUFFIX"
+}
+
 [ -z $DISPLAY ] || BROWSER=google-chrome-stable
 
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
@@ -73,3 +88,4 @@ export FZF_DEFAULT_OPTS='
  --color=fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
  --color=info:108,prompt:109,spinner:108,pointer:168,marker:168
 '
+
