@@ -80,15 +80,29 @@ if !filereadable(vundle_readme)
     let vundle_installed=0
 endif
 
+let gopls_installed=0
+let homedir=expand("~/")
+if !filereadable(homedir . ".go/bin/gopls")
+    echo "gopls not installed"
+    echo ""
+    echo "Attempting to run: go get -u golang.org/x/tools/cmd/gopls ..."
+    let output=system("go get -u golang.org/x/tools/cmd/gopls")
+    if v:shell_error != 0
+        echo "Failed installed gopls, please try to install"
+    endif
+    echo "Installed gopls!"
+else
+    let gopls_installed=1
+endif
+
 let gocode_installed=0
 let homedir=expand("~/")
 if !filereadable(homedir . ".go/bin/gocode")
-    echo "Gocode not installed"
+    echo "gocode not installed"
     echo ""
     echo "Attempting to run: go get -u github.com/nsf/gocode ..."
-    let output=system("go get -u github.com/nsf/gocode")
+    let output=system("go get -u go get -u github.com/nsf/gocode")
     if v:shell_error != 0
-        let gocode_installed=1
         echo "Failed installed gocode, please try to install"
     endif
     echo "Installed gocode!"
@@ -159,7 +173,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-go'
 " Vim go completion
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'zchee/deoplete-jedi'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
@@ -345,6 +359,7 @@ let g:go_highlight_build_constraints = 1
 
 " This is quite cool / handy
 let g:go_fmt_command = "goimports"
+let g:go_def_mode = "gopls"
 
 
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -454,7 +469,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \    'go': ['gometalinter', 'go vet'],
 \}
-"
 " let g:ale_fixers = {
 " \   'python': ['isort'],
 " \}
@@ -464,10 +478,9 @@ let g:ale_linters = {
 if filereadable('/etc/fbwhoami')
     let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
     let g:ale_python_flake8_options = '--shebang --config /data/users/coxley/fbsource/fbcode/.flake8'
-    " \    'python': ['flake8', 'pylint'],
     let g:ale_linters = {
     \    'python': ['flake8'],
-    \    'go': ['gometalinter', 'go vet'],
+    \    'go': ['gometalinter'],
     \}
 endif
 

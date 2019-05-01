@@ -12,7 +12,7 @@ if ! zgen-saved; then
     if [[ $(uname -r | grep -o '....$') == "ARCH" ]]; then
         zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
     else
-        zgen oh-my-zsh themes/steeef
+        zgen load denysdovhan/spaceship-prompt spaceship
     fi
 
     # Custom plugin
