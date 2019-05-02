@@ -3,6 +3,7 @@
   inactive_color_offset = 0.93
   suppress_multiple_term_dialog = True
   tab_position = hidden
+  title_font = SFNS Display 9
 [keybindings]
   copy = <Primary><Alt>c
   group_all = None
@@ -31,14 +32,13 @@
 [plugins]
 [profiles]
   [[default]]
-    allow_bold = False
     background_color = "#212121"
     background_darkness = 0.85
     background_image = None
     background_type = transparent
     cursor_color = "#EEFFFF"
     cursor_color_fg = False
-    font = Source Code Pro for Powerline Medium 9
+    font = Source Code Pro for Powerline Medium 8
     foreground_color = "#eeffff"
     icon_bell = False
     palette = "#212121:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#eeffff:#4a4a4a:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#ffffff"

@@ -80,35 +80,6 @@ if !filereadable(vundle_readme)
     let vundle_installed=0
 endif
 
-let gopls_installed=0
-let homedir=expand("~/")
-if !filereadable(homedir . ".go/bin/gopls")
-    echo "gopls not installed"
-    echo ""
-    echo "Attempting to run: go get -u golang.org/x/tools/cmd/gopls ..."
-    let output=system("go get -u golang.org/x/tools/cmd/gopls")
-    if v:shell_error != 0
-        echo "Failed installed gopls, please try to install"
-    endif
-    echo "Installed gopls!"
-else
-    let gopls_installed=1
-endif
-
-let gocode_installed=0
-let homedir=expand("~/")
-if !filereadable(homedir . ".go/bin/gocode")
-    echo "gocode not installed"
-    echo ""
-    echo "Attempting to run: go get -u github.com/nsf/gocode ..."
-    let output=system("go get -u go get -u github.com/nsf/gocode")
-    if v:shell_error != 0
-        echo "Failed installed gocode, please try to install"
-    endif
-    echo "Installed gocode!"
-else
-    let gocode_installed=1
-endif
 
 " Required for bug in Vundle - re-enable after plugin shit
 filetype plugin off
@@ -198,6 +169,7 @@ if vundle_installed == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
     :PluginInstall
+    :GoInstallBinaries
 endif
 
 call vundle#end()
@@ -357,9 +329,8 @@ let g:go_highlight_build_constraints = 1
 " let g:go_highlight_fields = 1
 " let g:go_highlight_types = 1
 
-" This is quite cool / handy
 let g:go_fmt_command = "goimports"
-let g:go_def_mode = "gopls"
+" let g:go_def_mode = "gopls"
 
 
 au FileType go nmap <leader>r <Plug>(go-run)
