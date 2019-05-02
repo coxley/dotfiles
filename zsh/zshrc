@@ -92,7 +92,6 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
-SPACESHIP_HG_SYMBOL=🐱
 
 [ -z $DISPLAY ] || BROWSER=google-chrome-stable
 
