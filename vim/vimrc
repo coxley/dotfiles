@@ -211,8 +211,10 @@ endif
 
 let g:vim_isort_python_version = 'python3'
 function PyFmt()
-    :Black
+    let cur = getcurpos()
     :Isort
+    :Black
+    :call cursor(cur[1:])
 endfunction
 autocmd BufWritePost *.py silent! call PyFmt()
 autocmd BufWritePost *.cinc silent! call PyFmt()
