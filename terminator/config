@@ -38,7 +38,7 @@
     background_type = transparent
     cursor_color = "#EEFFFF"
     cursor_color_fg = False
-    font = Source Code Pro for Powerline Medium 8
+    font = Source Code Pro for Powerline Medium 9
     foreground_color = "#eeffff"
     icon_bell = False
     palette = "#212121:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#eeffff:#4a4a4a:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#ffffff"
