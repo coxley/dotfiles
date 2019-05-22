@@ -61,7 +61,7 @@ if filereadable('/etc/fbwhoami')
 
       let filepos = expand("%:p") . ":" . linestr
       let urlcmd = "diffusion " . filepos
-      echom system(urlcmd . "|" . "fburl" . " 2> /dev/null")[:-2]
+      echom system(urlcmd . " 2> /dev/null")[:-2]
     endfunction
 
     nnoremap <leader><leader>d :call LinkToCode()<CR>
