@@ -3,7 +3,6 @@
   inactive_color_offset = 0.93
   suppress_multiple_term_dialog = True
   tab_position = hidden
-  title_font = SFNS Display 9
 [keybindings]
   copy = <Primary><Alt>c
   group_all = None
@@ -32,6 +31,7 @@
 [plugins]
 [profiles]
   [[default]]
+    allow_bold = False
     background_color = "#212121"
     background_darkness = 0.85
     background_image = None
