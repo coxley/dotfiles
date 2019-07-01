@@ -61,7 +61,7 @@ if filereadable('/etc/fbwhoami')
 
       let filepos = expand("%:p") . ":" . linestr
       let urlcmd = "diffusion " . filepos
-      if makeFburl
+      if a:makeFburl
           let urlcmd = urlcmd . " | fburl"
       endif
       echom system(urlcmd . " 2> /dev/null")[:-2]
