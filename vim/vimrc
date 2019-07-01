@@ -52,7 +52,7 @@ nnoremap <BS> gg
 if filereadable('/etc/fbwhoami')
     nnoremap <silent> <leader>n :call fzf#run({'source': '~/nfs/bin/wm', 'sink': 'e'})<CR>
     " Generate URL to view section of code for sharing
-    function! LinkToCode() range
+    function! LinkToCode(makeFburl) range
       let fullpath = resolve(expand('%:p'))
       let linestr = line('.')
       if a:lastline - a:firstline > 0
@@ -61,11 +61,16 @@ if filereadable('/etc/fbwhoami')
 
       let filepos = expand("%:p") . ":" . linestr
       let urlcmd = "diffusion " . filepos
+      if makeFburl
+          let urlcmd = urlcmd . " | fburl"
+      endif
       echom system(urlcmd . " 2> /dev/null")[:-2]
     endfunction
 
-    nnoremap <leader><leader>d :call LinkToCode()<CR>
-    vnoremap <leader><leader>d :call LinkToCode()<CR>
+    nnoremap <leader><leader>d :call LinkToCode(0)<CR>
+    vnoremap <leader><leader>d :call LinkToCode(0)<CR>
+    nnoremap <leader><leader>f :call LinkToCode(1)<CR>
+    vnoremap <leader><leader>f :call LinkToCode(1)<CR>
 endif
 
 
