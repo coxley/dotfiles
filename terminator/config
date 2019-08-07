@@ -1,34 +1,24 @@
+# palette = "{ black }:{ red }:{ green }:{ yellow }:{ blue }:{ magenta }:{ cyan }:{ white }:{ alt_black }:{ alt_red }:{ alt_green }:{ alt_yellow }:{ alt_blue }:{ alt_magenta }:{ alt_cyan }:{ alt_white }"
 [global_config]
   enabled_plugins = FBTasksURLHandler, FBPhabricatorURLHandler, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  tab_position = hidden
   inactive_color_offset = 0.93
   suppress_multiple_term_dialog = True
-  tab_position = hidden
 [keybindings]
-  copy = <Primary><Alt>c
+  switch_to_tab_10 = None
   group_all = None
-  move_tab_left = <Primary>Left
-  move_tab_right = <Primary>Right
   new_tab = <Shift>Down
   next_tab = <Shift>Right
-  paste = <Primary><Alt>v
+  move_tab_right = <Primary>Right
   prev_tab = <Shift>Left
-  switch_to_tab_1 = <Primary>1
-  switch_to_tab_10 = None
-  switch_to_tab_2 = <Primary>2
-  switch_to_tab_3 = <Primary>3
   switch_to_tab_4 = <Primary>4
   switch_to_tab_5 = <Primary>5
-[layouts]
-  [[default]]
-    [[[child1]]]
-      command = ""
-      parent = window0
-      profile = default
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-[plugins]
+  move_tab_left = <Primary>Left
+  switch_to_tab_3 = <Primary>3
+  switch_to_tab_1 = <Primary>1
+  switch_to_tab_2 = <Primary>2
+  copy = <Primary><Alt>c
+  paste = <Primary><Alt>v
 [profiles]
   [[default]]
     allow_bold = False
@@ -39,10 +29,21 @@
     cursor_color = "#EEFFFF"
     cursor_color_fg = False
     font = Source Code Pro for Powerline Medium 9
-    foreground_color = "#eeffff"
+    foreground_color = "#EEFFFF"
     icon_bell = False
-    palette = "#212121:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#eeffff:#4a4a4a:#f07178:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#ffffff"
+    palette = "#212121:#F07178:#C3E88D:#FFCB6B:#82AAFF:#C792EA:#89DDFF:#EEFFFF:#4A4A4A:#F07178:#C3E88D:#FFCB6B:#82AAFF:#C792EA:#89DDFF:#FFFFFF"
     scrollback_lines = 10000
     scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+      command = ""
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]

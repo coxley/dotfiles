@@ -231,6 +231,8 @@ if filereadable('/etc/fbwhoami')
 endif
 
 let g:vim_isort_python_version = 'python3'
+let g:vim_isort_config_overrides = {
+  \ 'include_trailing_comma': 1, 'multi_line_output': 3, 'combine_as_imports': 'true'}
 function PyFmt()
     let cur = getcurpos()
     :Isort

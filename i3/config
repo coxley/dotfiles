@@ -34,9 +34,6 @@ set $esc 0xff1b
 # Auto-start programs
 ######################
 
-# Set primary display to laptop
-# exec xrandr --output eDP1 --primary
-
 # Set preferred keyboard layout for X11
 exec setxkbmap dvorak
 
@@ -46,17 +43,8 @@ exec dunst
 # Autokey exansion
 exec autokey-gtk
 
-# Compositor
-# exec --no-startup-id compton
-
-# Bar - not currently using
-# exec yabar
-
 # Taskbar applet for NetworkManager
 exec nm-applet
-
-# Application Launcher
-exec albert
 
 # Clipboard poweruser tool
 exec parcellite
