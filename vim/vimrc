@@ -242,6 +242,7 @@ endfunction
 autocmd BufWritePost *.py silent! call PyFmt()
 autocmd BufWritePost *.cinc silent! call PyFmt()
 autocmd BufWritePost *.cconf silent! call PyFmt()
+autocmd BufWritePost *.mcconf silent! call PyFmt()
 autocmd BufWritePost *.tw silent! call PyFmt()
 
 " ##############
