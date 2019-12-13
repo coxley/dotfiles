@@ -9,7 +9,7 @@ if ! zgen-saved; then
 
     # Devservers should have different prompt than my workstations.
     # My workstations are always Arch
-    if [[ $(uname -r | grep -o '....$') == "ARCH" ]]; then
+    if [[ $(uname -r | grep -o 'arch1') == "arch1" ]]; then
         zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
     else
         zgen load denysdovhan/spaceship-prompt spaceship
