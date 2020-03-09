@@ -139,7 +139,6 @@ Plugin 'w0rp/ale'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'coxley/codepad'
 Plugin 'keith/gist.vim'
-" Plugin 'nvie/vim-flake8'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'dhruvasagar/vim-table-mode'
@@ -148,8 +147,6 @@ Plugin 'kana/vim-fakeclip'
 Plugin 'jlfwong/vim-arcanist'
 Plugin 'phleet/vim-mercenary'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'ambv/black'
-Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-abolish'
 Plugin 'junegunn/fzf.vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -226,18 +223,8 @@ if filereadable('/etc/fbwhoami')
     let g:python3_host_prog='/home/coxley/virtualenvs/neovim/bin/python'
     let g:python_host_prog='/home/coxley/virtualenvs/neovim2/bin/python'
     " Autofmt TARGETS files
-    autocmd BufWritePost TARGETS silent! exec "!~/bin/buckfmt -i %" | :e
+    autocmd BufWritePre TARGETS silent! exec "!~/bin/buckfmt -i %" | :e
 endif
-
-let g:vim_isort_python_version = 'python3'
-let g:vim_isort_config_overrides = {
-  \ 'include_trailing_comma': 1, 'multi_line_output': 3, 'combine_as_imports': 'true'}
-function PyFmt()
-    let cur = getcurpos()
-    :Isort
-    :Black
-    :call cursor(cur[1:])
-endfunction
 
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
 autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
@@ -465,18 +452,24 @@ let g:colorizer_auto_filetype='css,html,javascript'
 "
 " Required for operations modifying multiple buffers like rename.
 set hidden
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'go': ['gopls'],
-    \ }
-
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 if filereadable('/etc/fbwhoami')
+  let g:LanguageClient_rootMarkers = ['.projectid']
   let g:LanguageClient_serverCommands = {
     \ 'cpp': ['/bin/cquery-language-server'],
     \ 'python': ['/usr/local/bin/pyls-language-server'],
     \ 'go': ['/usr/local/bin/fbgo-langserver', '-gocodecompletion', '-logfile=/tmp/nuclide-$USER-logs/golangserver.log'],
   \ }
+  let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
+  let g:ale_python_flake8_args = '--shebang --config /data/users/coxley/fbsource/fbcode/.flake8'
+  let g:ale_linters = {
+    \    'python': ['flake8'],
+  \}
+else
+    let g:LanguageClient_serverCommands = {
+        \ 'python': ['pyls'],
+        \ 'go': ['gopls'],
+        \ }
 endif
 
 let g:ale_fix_on_save = 0
@@ -569,8 +562,8 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 nnoremap <leader>ue :UltiSnipsEdit<CR>
 
 let g:UltiSnipsEditSplit='vertical'
-"
-" let g:UltiSnipsUsePythonVersion = 3
+
+let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style="google"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim-snippets", "~/.config/nvim/UltiSnips"]
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
@@ -701,4 +694,4 @@ let &colorcolumn=join(range(89,999),",")
 highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%89v.\+/
-highlight Search ctermbg='NONE' ctermfg=226
+highlight Search ctermbg='NONE' ctermfg=226ighlight Search ctermbg='NONE' ctermfg=226
