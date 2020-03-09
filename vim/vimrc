@@ -16,11 +16,10 @@ let mapleader=","
 cmap w!! %!sudo tee > /dev/null %
 
 " Setup runtime path
+let g:loaded_python_provider = 0
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
-let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python3.6/site-packages/powerline/bindings/vim/")
-let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python3.5/site-packages/powerline/bindings/vim/")
-let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.7/site-packages/powerline/bindings/vim/")
-let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python2.6/site-packages/powerline/bindings/vim/")
+let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python3.8/site-packages/powerline/bindings/vim/")
+let &rtp = &rtp . ',' . s:editor_root . expand("~/.local/lib/python3.7/site-packages/powerline/bindings/vim/")
 set rtp+=~/.fzf
 
 " Disable compatibility mode
@@ -136,8 +135,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " Utility plugins
-" Plugin 'neomake/neomake'
 Plugin 'w0rp/ale'
+Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'coxley/codepad'
 Plugin 'keith/gist.vim'
 " Plugin 'nvie/vim-flake8'
@@ -459,30 +458,30 @@ let g:vim_markdown_frontmatter=1
 let g:colorizer_auto_filetype='css,html,javascript'
 
 " #######
-" ALE
+" ALE & LanguageClient
 " #######
 "
-let g:airline#extensions#ale#enabled = 1
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
+    \ }
 
-" Better error string
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+if filereadable('/etc/fbwhoami')
+  let g:LanguageClient_serverCommands = {
+    \ 'cpp': ['/bin/cquery-language-server'],
+    \ 'python': ['/usr/local/bin/pyls-language-server'],
+    \ 'go': ['/usr/local/bin/fbgo-langserver', '-gocodecompletion', '-logfile=/tmp/nuclide-$USER-logs/golangserver.log'],
+  \ }
+endif
+
+let g:ale_fix_on_save = 0
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-let g:ale_linters = {
-\    'go': ['gometalinter', 'go vet'],
-\}
-
-" let g:ale_fix_on_save = 1
-
-if filereadable('/etc/fbwhoami')
-    let g:ale_python_flake8_executable = '/home/coxley/bin/flakey8'
-    let g:ale_python_flake8_options = '--shebang --config /data/users/coxley/fbsource/fbcode/.flake8'
-    let g:ale_linters = {
-    \    'python': ['flake8'],
-    \    'go': ['gometalinter'],
-    \}
-endif
+let g:airline#extensions#ale#enabled = 1
 
 " ########
 " Deoplete
