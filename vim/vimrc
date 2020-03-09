@@ -238,11 +238,13 @@ function PyFmt()
     :Black
     :call cursor(cur[1:])
 endfunction
-autocmd BufWritePost *.py silent! call PyFmt()
-autocmd BufWritePost *.cinc silent! call PyFmt()
-autocmd BufWritePost *.cconf silent! call PyFmt()
-autocmd BufWritePost *.mcconf silent! call PyFmt()
-autocmd BufWritePost *.tw silent! call PyFmt()
+
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.cinc :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.cconf :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.mcconf :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.tw :call LanguageClient#textDocument_formatting()
 
 " ##############
 " Split and tabs
