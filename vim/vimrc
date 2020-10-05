@@ -48,6 +48,7 @@ nnoremap <silent> -- <C-w>n
 nnoremap <C-t> :Files<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
+nnoremap <C-_> <Plug>TCommentMaybeInline
 if filereadable('/etc/fbwhoami')
     nnoremap <silent> <leader>n :call fzf#run({'source': '~/nfs/bin/wm', 'sink': 'e'})<CR>
     " Generate URL to view section of code for sharing
@@ -99,6 +100,15 @@ if !filereadable(vundle_readme)
     silent execute "!git clone " . vundle_repo . " " . s:editor_root . "/bundle/Vundle.vim"
     let vundle_installed=0
 endif
+
+augroup balancebot
+    autocmd!
+    " Report to Balance Bot
+    autocmd VimEnter * silent exec "!(~/bin/balance.sh vim_open &) > /dev/null"
+    autocmd VimLeave * silent exec "!(~/bin/balance.sh vim_close &) > /dev/null"
+    autocmd BufReadPost,StdinReadPost * silent exec "!(~/bin/balance.sh file_open &) > /dev/null"
+    autocmd BufWritePost * silent exec "!(~/bin/balance.sh file_save &) > /dev/null"
+augroup END
 
 
 " Required for bug in Vundle - re-enable after plugin shit
@@ -213,6 +223,10 @@ au BufRead,BufNewFile *.j2 set ts=2 sw=2 sts=2 expandtab ft=jinja
 au BufRead,BufNewFile *.rb set ts=2 sw=2 sts=2 expandtab
 au BufRead,BufNewFile *.yaml set ts=2 sw=2 sts=2 expandtab ft=yaml
 au BufRead,BufNewFile *.yml set ts=2 sw=2 sts=2 expandtab ft=yaml
+
+au BufRead,BufNewFile *.html set ts=2 sw=2 sts=2 filetype=html
+au BufRead,BufNewFile *.css set ts=2 sw=2 sts=2 filetype=css
+au BufRead,BufNewFile *.js set ts=2 sw=2 sts=2 filetype=js
 
 au BufRead,BufNewFile *.cconf set filetype=python
 au BufRead,BufNewFile *.mcconf set filetype=python
@@ -694,4 +708,4 @@ let &colorcolumn=join(range(89,999),",")
 highlight colorcolumn ctermbg=235 guibg=#2c2d27
 highlight OverLength ctermbg=white ctermfg=red
 match OverLength /\%89v.\+/
-highlight Search ctermbg='NONE' ctermfg=226ighlight Search ctermbg='NONE' ctermfg=226
+highlight Search ctermbg='NONE' ctermfg=226
