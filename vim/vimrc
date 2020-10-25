@@ -64,6 +64,7 @@ if filereadable('/etc/fbwhoami')
       if a:makeFburl
           let urlcmd = urlcmd . " | fburl"
       endif
+      redraw
       echom system(urlcmd . " 2> /dev/null")[:-2]
     endfunction
 
