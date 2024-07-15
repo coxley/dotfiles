@@ -1,1 +1,0 @@
-/home/coxley/docs/projects/dotfiles/i3status/config
