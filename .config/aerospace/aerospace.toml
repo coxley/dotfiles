@@ -1,0 +1,165 @@
+config-version = 2
+
+# Border color for focused window:
+#     brew tap FelixKratz/formulae
+#     brew install borders
+after-startup-command = [
+  'exec-and-forget borders active_color=0xaa7df9ff inactive_color=0x00000000 width=5.0 hidpi=on'
+]
+
+persistent-workspaces = []
+accordion-padding = 0
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# Mouse lazily follows any focus (window or workspace)
+on-focus-changed = ['move-mouse window-lazy-center']
+
+# Keybindings are converted to hardware codes, so need to set dvorak preset.
+[key-mapping]
+  preset = "qwerty"
+
+[mode.main.binding]
+    # Spawn Ghostty on option-enter
+    alt-enter = '''exec-and-forget osascript -e '
+    tell application "Ghostty"
+	if it is running then
+		activate
+		tell application "System Events" to keystroke "n" using {command down}
+	else
+		activate
+	end if
+    end tell'
+    '''
+
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # Work seamlessly with vim splits
+    ctrl-f = 'fullscreen'
+    ctrl-h = 'exec-and-forget ~/.local/state/nvim/aerospace-focus/move.sh left'
+    ctrl-j = 'exec-and-forget ~/.local/state/nvim/aerospace-focus/move.sh down'
+    ctrl-k = 'exec-and-forget ~/.local/state/nvim/aerospace-focus/move.sh up'
+    ctrl-l = 'exec-and-forget ~/.local/state/nvim/aerospace-focus/move.sh right'
+    ctrl-shift-h = 'move left'
+    ctrl-shift-j = 'move down'
+    ctrl-shift-k = 'move up'
+    ctrl-shift-l = 'move right'
+
+    # For the occasion when I don't want to jump through vim splits to change focus
+    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+    alt-g = 'join-with right'
+    alt-v = 'join-with down'
+
+    alt-s = 'layout v_accordion' # 'layout stacking' in ij
+    alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+    alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+    alt-backtick = 'focus-back-and-forth'
+
+    # Toggle float
+    alt-space = 'layout floating tiling'
+
+    # Starting at ctrl-8 makes it easier to do with right-caps as ctrl
+    ctrl-5 = 'workspace 6'
+    ctrl-6 = 'workspace 5'
+    ctrl-7 = 'workspace 4'
+    ctrl-8 = 'workspace 3'
+    ctrl-9 = 'workspace 2'
+    ctrl-0 = 'workspace 1'
+
+    ctrl-shift-5 = 'move-node-to-workspace 6'
+    ctrl-shift-6 = 'move-node-to-workspace 5'
+    ctrl-shift-7 = 'move-node-to-workspace 4'
+    ctrl-shift-8 = 'move-node-to-workspace 3'
+    ctrl-shift-9 = 'move-node-to-workspace 2'
+    ctrl-shift-0 = 'move-node-to-workspace 1'
+
+    alt-shift-c = 'reload-config'
+
+[gaps]
+    inner.horizontal = 8
+    inner.vertical =   8
+    outer.left =       8
+    outer.bottom =     8
+    outer.top =        8
+    outer.right =      8
+
+[[on-window-detected]]
+    if.app-id="com.mitchellh.ghostty"
+    run= [
+    "layout tiling",
+    ]
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    if.window-title-regex-substring = 'Sign in - Google Accounts'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    if.window-title-regex-substring = 'Slush'
+    run = 'layout floating'
+
+# zsh helper to updating this easier:
+#
+# function aerofloat() {
+#     app_id=$(osascript -e "id of app \"$1\"") || return 1
+#     cat <<EOF >> aerospace config --config-path
+#
+# [[on-window-detected]]
+#     if.app-id = '${app_id}'
+#     run = 'layout floating'
+# EOF
+#     aerospace reload-config
+# }
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.preview'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.ActivityMonitor'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Notes'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.reminders'
+    run = 'layout floating'
+
+
+[[on-window-detected]]
+    if.app-id = 'cc.ffitch.shottr'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.MobileSMS'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.podcasts'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.podcasts'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.FontBook'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.AddressBook'
+    run = 'layout floating'

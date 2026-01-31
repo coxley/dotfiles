@@ -1,0 +1,101 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.2",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xc52b",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 4.6067
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "category" : "trackpad",
+          "productID" : "0x343",
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "vendorID" : "0x5ac"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      }
+    },
+    {
+      "buttons" : {
+        "universalBackForward" : true
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xb01d",
+          "productName" : "MX Ergo",
+          "serialNumber" : "8D4E3459DA77CA45",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "speed" : 0.15
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1.41
+        },
+        "distance" : {
+          "vertical" : "auto"
+        },
+        "speed" : {
+          "vertical" : 35.59
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xb01d",
+          "productName" : "MX Ergo",
+          "serialNumber" : "0C49B7D1A2CA0AB3",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : false,
+        "speed" : 0.12
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1.22
+        },
+        "speed" : {
+          "vertical" : 6.93
+        }
+      }
+    },
+    {
+      "if" : {
+        "app" : "com.helftone.monodraw",
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xb01d",
+          "productName" : "MX Ergo",
+          "serialNumber" : "0C49B7D1A2CA0AB3",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "speed" : {
+          "vertical" : 69.36
+        }
+      }
+    }
+  ]
+}

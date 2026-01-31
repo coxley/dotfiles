@@ -1,0 +1,12 @@
+line-length = 89
+disabled-rules = ["MD033"]
+
+[MD013]
+line-length = 89
+code-blocks = false
+# headings = false
+# tables = false
+# stern = false # Stricter checking without exceptions
+# strict = false # Disables exceptions for URLs, etc.
+reflow = true
+# reflow_mode = "sentence_per_line" # Reflow mode: "default", "normalize", or "sentence_per_line" (default: "default")

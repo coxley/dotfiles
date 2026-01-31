@@ -1,13 +1,8 @@
-dotfiles=$HOME/docs/projects/dotfiles
-
-# scripts - individually to allow host-specific scripts not in git
-for file in $dotfiles/bin/*; do
-    ln -s $file $HOME/bin
-done
-
-# vim
-ln -s $dotfiles/nvim $HOME/.config/nvim
-
-# zsh
-ln -s $dotfiles/zsh/zshrc $HOME/.zshrc
-ln -s $dotfiles/zsh/zgen.zsh $HOME/.zgen.zsh
+ln -sf $PWD/.config/aerospace $HOME/.config/
+ln -sf $PWD/.config/atuin $HOME/.config/
+ln -sf $PWD/.config/ghostty $HOME/.config/
+ln -sf $PWD/.config/linearmouse $HOME/.config/
+ln -sf $PWD/.config/nvim $HOME/.config/
+ln -sf $PWD/.config/rumdl $HOME/.config/
+ln -sf $PWD/.config/zsh $HOME/.config/
+ln -sf $PWD/.zshrc $HOME/.zshrc

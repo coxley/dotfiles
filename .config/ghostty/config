@@ -1,0 +1,66 @@
+# Uncomment to launch into Zellij immediately
+#
+# This is significantly faster than booting into normal ZSH session, loading RC
+# files, THEN starting zellij. Trade-off is then you can't "escape" zellij
+# command = "/opt/homebrew/bin/zellij"
+confirm-close-surface = false
+
+# -- Font + Theme
+theme = "Catppuccin Mocha"
+# Unset any default fonts before declaring our own
+font-family =
+font-family = "Berkeley Mono"
+font-style-bold = "SemiBold"
+font-style-italic = "SemiLight Oblique"
+font-style-bold-italic = "SemiBold Oblique"
+font-size = 13
+
+font-feature = calt
+font-feature = liga
+font-feature = ccmp
+font-feature = locl
+font-feature = ss08
+
+alpha-blending = "linear-corrected"
+window-colorspace = display-p3
+
+#scrollbar = never
+
+# TMP?
+bold-is-bright = true
+font-style = "Regular"
+#font-thicken = true
+#font-thicken-strength = 32
+
+# -- Clipboard + Cursor
+clipboard-read = "allow"
+copy-on-select = clipboard
+clipboard-paste-protection = false
+cursor-style = block
+cursor-style-blink = true
+
+# -- Window Settings
+background-opacity = 0.85
+background-blur-radius  = 10
+unfocused-split-opacity = 0.7
+unfocused-split-fill = 181825
+# This would disable tabs and make it impossible to resize without Rectangle or similar
+# window-decoration = false
+
+
+# Prevent spewing control sequences when accidentally hitting ENTER while SHIFT or CTRL
+# is still held.
+keybind = shift+enter=text:\r
+keybind = ctrl+enter=text:\r
+
+# HACK: Transforms cmd+l into ctrl+f, so Zellij can map ctrl+f to 0x0C
+# (formfeed/ctrl+l), so that actual ctrl+l can be used for pane navigation
+#keybind = cmd+l=text:\x06
+keybind = cmd+l=text:\x0C
+
+# -- macos
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+macos-window-shadow = false
+
+#custom-shader=/Users/coxley/.config/ghostty/shaders/column.glsl
