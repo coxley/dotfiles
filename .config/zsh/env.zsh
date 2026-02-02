@@ -55,3 +55,9 @@ fi
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GPG_TTY=$(tty)
 export BAT_THEME=ansi
+
+# Force certain more-secure behaviours from homebrew
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+export HOMEBREW_DIR=/opt/homebrew
+export HOMEBREW_BIN=/opt/homebrew/bin

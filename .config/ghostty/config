@@ -1,8 +1,3 @@
-# Uncomment to launch into Zellij immediately
-#
-# This is significantly faster than booting into normal ZSH session, loading RC
-# files, THEN starting zellij. Trade-off is then you can't "escape" zellij
-# command = "/opt/homebrew/bin/zellij"
 confirm-close-surface = false
 
 # -- Font + Theme
@@ -23,6 +18,7 @@ font-feature = ss08
 
 alpha-blending = "linear-corrected"
 window-colorspace = display-p3
+window-save-state = always
 
 #scrollbar = never
 
@@ -40,7 +36,7 @@ cursor-style = block
 cursor-style-blink = true
 
 # -- Window Settings
-background-opacity = 0.85
+background-opacity = 0.90
 background-blur-radius  = 10
 unfocused-split-opacity = 0.7
 unfocused-split-fill = 181825
@@ -56,11 +52,21 @@ keybind = ctrl+enter=text:\r
 # HACK: Transforms cmd+l into ctrl+f, so Zellij can map ctrl+f to 0x0C
 # (formfeed/ctrl+l), so that actual ctrl+l can be used for pane navigation
 #keybind = cmd+l=text:\x06
+
+# cmd+l => ctrl+l so we can use ctrl+[hjkl] for aerospace nav
 keybind = cmd+l=text:\x0C
+keybind = ctrl+enter=text:\r
+keybind = global:ctrl+backquote=toggle_quick_terminal
+quick-terminal-position = right
+quick-terminal-size = 42%,32px
+quick-terminal-autohide = true
 
 # -- macos
 macos-option-as-alt = true
 macos-titlebar-style = hidden
 macos-window-shadow = false
+#minimum-contrast = 1.1
 
 #custom-shader=/Users/coxley/.config/ghostty/shaders/column.glsl
+link-previews = true
+shell-integration-features = true

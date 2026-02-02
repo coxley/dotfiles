@@ -104,8 +104,6 @@ return {
                     }
                 }
             })
-            vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
             local configs = require('lspconfig.configs')
             local util = require('lspconfig.util')
             configs.protobuf_language_server = {
@@ -242,7 +240,31 @@ return {
             })
         end
     },
-    { "mhartington/formatter.nvim", opts = {}, },
+    {
+        "mhartington/formatter.nvim",
+        config = function()
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                pattern = '*',
+                callback = function()
+                    if vim.lsp.buf_is_attached() then
+                        vim.lsp.buf.format()
+                    else
+                        vim.cmd.Format()
+                    end
+                end
+            })
+            require("formatter").setup({
+                filetype = {
+                    bzl = {
+                        {
+                            exe = "buildifier",
+                            stdin = true,
+                        },
+                    },
+                }
+            })
+        end
+    },
     {
         "rmagatti/goto-preview",
         dependencies = 'rmagatti/logger.nvim',

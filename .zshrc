@@ -3,6 +3,10 @@ if [[ $ZPROF -eq 1 ]]; then
     zmodload zsh/zprof
 fi
 
+if [[ -f $HOME/.zsh_work ]]; then
+    source $HOME/.zsh_work
+fi
+
 source ~/.config/zsh/zgen.zsh
 if ! zgen-saved; then
     echo "Creating a zgen save"

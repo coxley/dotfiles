@@ -58,8 +58,8 @@ on-focus-changed = ['move-mouse window-lazy-center']
     alt-g = 'join-with right'
     alt-v = 'join-with down'
 
-    alt-s = 'layout v_accordion' # 'layout stacking' in ij
-    alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+    alt-s = 'layout h_accordion' # 'layout tabbed' in ij
+    # alt-w = 'layout v_accordion' # 'layout stacking' in i3
     alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
     alt-backtick = 'focus-back-and-forth'
 
@@ -86,10 +86,10 @@ on-focus-changed = ['move-mouse window-lazy-center']
 [gaps]
     inner.horizontal = 8
     inner.vertical =   8
-    outer.left =       8
-    outer.bottom =     8
-    outer.top =        8
-    outer.right =      8
+    outer.left =       32
+    outer.bottom =     32
+    outer.top =        32
+    outer.right =      32
 
 [[on-window-detected]]
     if.app-id="com.mitchellh.ghostty"
@@ -105,6 +105,11 @@ on-focus-changed = ['move-mouse window-lazy-center']
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
     if.window-title-regex-substring = 'Slush'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'zoom.us'
+    if.window-title-regex-substring = 'Zoom Workplace'
     run = 'layout floating'
 
 # zsh helper to updating this easier:
@@ -162,4 +167,16 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 [[on-window-detected]]
     if.app-id = 'com.apple.AddressBook'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Photos'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.electron.dockerdesktop'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.jamfsoftware.selfservice.mac'
     run = 'layout floating'

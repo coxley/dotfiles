@@ -8,6 +8,18 @@ source ~/.config/zsh/keys.zsh
 source ~/.config/zsh/setup.zsh
 source ~/.config/zsh/z.sh
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if (( $+commands[pyenv] )); then
+    eval "$(pyenv init -)"
+fi
+if (( $+commands[rbenv] )); then
+    eval "$(rbenv init -)"
+fi
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
+
 setopt PROMPT_SUBST
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -40,5 +52,10 @@ SPACESHIP_KUBECTL_CONTEXT_COLOR_GROUPS=(
 )
 
 autoload -U +X bashcompinit && bashcompinit
+# This way the completion script does not have to parse Bazel's options
+# repeatedly.  The directory in cache-path must be created manually.
+# zstyle ':completion:*' use-cache on
+# zstyle ':completion:*' cache-path ~/.zsh/cache
+compdef _bazel bzl
 # autoload -Uz compinit
 # compinit

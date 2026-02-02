@@ -65,10 +65,18 @@ return {
             local gopls_cfg = require('go.lsp').config()
             gopls_cfg.on_attach = disable_formatexpr
             gopls_cfg.filetypes = { "go", "gomod" }
+
+            if vim.env.DATADOG_ROOT ~= nil then
+                gopls_cfg.cmd = { 'dd-gopls' }
+                gopls_cfg.cmd_env = {
+                    GOPLS_DISABLE_MODULE_LOADS = 1,
+                }
+            end
             gopls_cfg.settings = {
                 gopls = {
+                    remote = "auto",
                     matcher = 'CaseInsensitive',
-                    ['local'] = 'github.com/TriggerMail,github.com/albycom',
+                    ['local'] = 'github.com/DataDog',
                     gofumpt = true,
                     semanticTokens = true,
                     semanticTokenModifiers = {
