@@ -50,12 +50,3 @@ SPACESHIP_KUBECTL_CONTEXT_COLOR_GROUPS=(
   # else, yellow if "prod" is anywhere in the context or namespace
   yellow prod
 )
-
-autoload -U +X bashcompinit && bashcompinit
-# This way the completion script does not have to parse Bazel's options
-# repeatedly.  The directory in cache-path must be created manually.
-# zstyle ':completion:*' use-cache on
-# zstyle ':completion:*' cache-path ~/.zsh/cache
-compdef _bazel bzl
-# autoload -Uz compinit
-# compinit

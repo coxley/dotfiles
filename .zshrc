@@ -27,6 +27,7 @@ else
     source ~/.config/zsh/init.zsh
 fi
 
+compinit
 
 if [[ $ZPROF -eq 1 ]]; then
     zprof
