@@ -53,7 +53,7 @@
           "vertical" : "auto"
         },
         "speed" : {
-          "vertical" : 35.59
+          "vertical" : 7.0
         }
       }
     },
@@ -68,15 +68,16 @@
         }
       },
       "pointer" : {
+        "acceleration" : 3,
         "disableAcceleration" : false,
-        "speed" : 0.12
+        "speed" : 0.15
       },
       "scrolling" : {
         "acceleration" : {
           "vertical" : 1.22
         },
         "speed" : {
-          "vertical" : 6.93
+          "vertical" : 7.0
         }
       }
     },

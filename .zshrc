@@ -12,12 +12,13 @@ if ! zgen-saved; then
     echo "Creating a zgen save"
 
     zgen oh-my-zsh
-    zgen load denysdovhan/spaceship-prompt spaceship
-    zgen load zsh-users/zsh-syntax-highlighting
-
     zgen oh-my-zsh plugins/catimg
     zgen oh-my-zsh plugins/common-aliases
     zgen oh-my-zsh plugins/ssh-agent
+
+    zgen load denysdovhan/spaceship-prompt spaceship
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-completions src
 
     zgen save
 
@@ -27,6 +28,7 @@ else
     source ~/.config/zsh/init.zsh
 fi
 
+autoload -U +X bashcompinit && bashcompinit
 compinit
 
 if [[ $ZPROF -eq 1 ]]; then

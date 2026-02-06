@@ -19,8 +19,9 @@ map('n', '<BS>', 'gg', options)
 
 -- Split navigation
 map('n', 'vv', ':vnew<CR>', options)
-map('n', '<Bar><Bar>', ':vnew<CR>', options)
+map('n', 'VV', ':vsplit<CR>', options)
 map('n', '--', '<C-w>n', options)
+map('n', '__', ':split<CR>', options)
 map('n', '<C-J>', '<C-W><C-J>', options)
 map('n', '<C-K>', '<C-W><C-K>', options)
 map('n', '<C-L>', '<C-W><C-L>', options)

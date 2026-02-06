@@ -1,4 +1,4 @@
-function _default() {
+function _set_default() {
     local name=$1
     if [[ ${(P)name} ]]; then
         return
@@ -29,7 +29,7 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 CASE_SENSITIVE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-_default TERM xterm-256color
+_set_default TERM xterm-256color
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 

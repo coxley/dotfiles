@@ -1,12 +1,3 @@
-compinit
-autoload -U +X bashcompinit && bashcompinit
-
-# This way the completion script does not have to parse Bazel's options
-# repeatedly.  The directory in cache-path must be created manually.
-# zstyle ':completion:*' use-cache on
-# zstyle ':completion:*' cache-path ~/.zsh/cache
-compdef _bazel bzl
-
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 # Motivation: https://hacdias.com/2021/05/30/cd-alias-completions-zsh/
 typeset -A cd_aliases=(
@@ -45,3 +36,13 @@ for key in "${(@k)vim_aliases}"; do
     compdef _$key $key
 done
 
+if (( ${+DATADOG_ROOT} )); then
+    # Load git-dd completions for zsh
+    autoload -Uz _git_dd
+
+    # This way the completion script does not have to parse Bazel's options
+    # repeatedly.  The directory in cache-path must be created manually.
+    # zstyle ':completion:*' use-cache on
+    # zstyle ':completion:*' cache-path ~/.zsh/cache
+    compdef _bazel bzl
+fi

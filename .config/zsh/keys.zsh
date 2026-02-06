@@ -1,3 +1,68 @@
 bindkey \^U backward-kill-line
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+function bindlist() {
+  local flag_all flag_help flag_list flag_raw
+  local usage=(
+    "Usage:"
+    "  bindlist              list bindings"
+    "  bindlist -h --help    print this message"
+    "Options:"
+    "  -a --all              include all bindings"
+    "  -l --list             single column output"
+    "  -r --raw              bindkey format"
+  )
+  zmodload zsh/zutil
+  zparseopts -D -F -- \
+    {a,-all}=flag_all \
+    {h,-help}=flag_help \
+    {l,-list}=flag_list \
+    {r,-raw}=flag_raw \
+    || return 1
+  [[ -z "$flag_help" ]] || { print -l $usage && return }
+
+  local patterns _list estring
+  typeset -a patterns
+
+  if ! (( $#flag_all )); then
+    patterns=(
+      "\^\[\["      # match "^[["
+      "\^\[O[A-H]"  # match "^[OA"..."^[OH"
+      "^\"\\\M"     # match "\M-^@"-"\M-^?"
+      "\"-\"~\""    # match " "-"~"
+      )
+    for pat in $patterns
+    do
+      estring=$estring" -e '"$pat"'"
+    done
+    _list=$(bindkey | eval grep -v $estring)
+  else
+    _list=$(bindkey)
+  fi
+
+  if ! (( $#flag_raw )); then
+    # sed patterns
+    estring=           # re-init
+    patterns=(
+      's/^"//g'        # remove 1st quote
+      's/" / /g'       # remove 2nd quote
+      's/\^\[/⌥/g'     # replace meta chars with option symbol
+      's/\^\?/DEL/g'   # replace ^? with DEL
+      )
+    for pat in $patterns
+    do
+      estring=$estring" -e '"$pat"'"
+    done
+    _list=$(echo $_list | eval sed $estring)
+  fi
+
+  if (( $#flag_list )); then
+    print -- "${_list}"
+  else
+    IFS=$'\n'
+    print -c -- "${(f)_list}"
+    unset IFS
+  fi
+}
+compdef _gnu_generic bindlist

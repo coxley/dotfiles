@@ -34,6 +34,8 @@ on-focus-changed = ['move-mouse window-lazy-center']
 	end if
     end tell'
     '''
+    # Spawn multiple terminals for a workspace
+    alt-shift-enter = 'exec-and-forget ~/.local/bin/aerospace_dev.sh'
 
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
@@ -179,4 +181,8 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 [[on-window-detected]]
     if.app-id = 'com.jamfsoftware.selfservice.mac'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.appgate.sdp'
     run = 'layout floating'

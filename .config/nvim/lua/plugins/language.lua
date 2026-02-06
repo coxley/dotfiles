@@ -70,6 +70,10 @@ return {
                 gopls_cfg.cmd = { 'dd-gopls' }
                 gopls_cfg.cmd_env = {
                     GOPLS_DISABLE_MODULE_LOADS = 1,
+                    GOPROXY =
+                    "https://depot-read-api-go.us1.ddbuild.io/magicmirror/magicmirror/@current/|https://depot-read-api-go.us1.ddbuild.io/magicmirror/testing/@current/",
+                    GONOSUMDB = "github.com/DataDog,go.ddbuild.io",
+                    GOPRIVATE = "",
                 }
             end
             gopls_cfg.settings = {

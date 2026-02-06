@@ -1,3 +1,7 @@
+mkdir -p ~/.local/bin
+mkdir -p ~/.config
+
+ln -sf $PWD/.local/bin/* $HOME/.local/bin/
 ln -sf $PWD/.config/aerospace $HOME/.config/
 ln -sf $PWD/.config/atuin $HOME/.config/
 ln -sf $PWD/.config/ghostty $HOME/.config/

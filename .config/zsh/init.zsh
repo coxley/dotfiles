@@ -35,7 +35,16 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-SPACESHIP_RPROMPT_ORDER=(kubectl_context)
+# TODO: be smarter about available cols vs. total
+_set_rprompt() {
+    if [[ $(tput cols) -gt 74 ]]; then 
+        SPACESHIP_RPROMPT_ORDER=(kubectl_context)
+    else 
+        SPACESHIP_RPROMPT_ORDER=()
+    fi
+}
+_set_rprompt
+trap '_set_rprompt' SIGWINCH
 
 SPACESHIP_KUBECTL_CONTEXT_COLOR_GROUPS=(
   # red if namespace is "kube-system"
