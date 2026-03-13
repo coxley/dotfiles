@@ -1,6 +1,8 @@
 # Global alias for things like 'some-cmd NUL'
 alias -g NUL=' &> /dev/null'
 
+alias -g YML=' -o yaml | yq'
+
 # 'vim tt' -> 'vim <temp>.sh' for quick testing
 alias -g tt='$(mktemp --suffix=.sh)'
 
@@ -18,6 +20,7 @@ alias gs='git status'
 alias gc='git checkout'
 alias gl='git log'
 alias rg='rg --no-heading'
+alias k='kubectl'
 alias kns='kubens'
 alias ktx='kubectx'
 
@@ -27,7 +30,7 @@ alias function_names="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
 alias ungron="gron --ungron"
 alias sql=sleek
-alias ls='eza --group-directories-first -X'
+alias ls='eza --group-directories-first'
 alias ll='ls -l'
 alias lls='ll --total-size'
 alias tree='eza -T'
@@ -263,12 +266,13 @@ function clone() {
 
     case $host in
         github.com)
-            gh repo clone $location $dir
+            gh repo clone $location $dir || rmdir $dir; return
             ;;
         *)
-            git clone $1 $dir
+            git clone $1 $dir || rmdir $dir; return
             ;;
     esac
 
     cd $dir
 }
+

@@ -28,6 +28,8 @@ else
     source ~/.config/zsh/init.zsh
 fi
 
+# autoload -Uz /usr/share/zsh/*/functions/*(:t)
+autoload -Uz /opt/homebrew/share/zsh/site-functions/*(:t)
 autoload -U +X bashcompinit && bashcompinit
 compinit
 

@@ -38,25 +38,41 @@ cursor-style-blink = true
 # -- Window Settings
 background-opacity = 0.90
 background-blur-radius  = 10
-unfocused-split-opacity = 0.7
-unfocused-split-fill = 181825
+unfocused-split-opacity = 0.8
+unfocused-split-fill = 101010
+split-divider-color = aa2299
+focus-follows-mouse = true
+auto-update = check
+auto-update-channel = tip
 # This would disable tabs and make it impossible to resize without Rectangle or similar
 # window-decoration = false
 
 
 # Prevent spewing control sequences when accidentally hitting ENTER while SHIFT or CTRL
 # is still held.
-keybind = shift+enter=text:\r
+#keybind = shift+enter=text:\n
 keybind = ctrl+enter=text:\r
+
+# Work around physical vs. logical placement
+# https://github.com/ghostty-org/ghostty/discussions/7540
+keybind = cmd+equal=unbind
+keybind = cmd+bracket_left=unbind
+keybind = cmd+bracket_right=unbind
+keybind = cmd+[=goto_split:previous
+keybind = cmd+]=goto_split:next
+keybind = cmd+==increase_font_size:1
+keybind = cmd+-=decrease_font_size:1
 
 # HACK: Transforms cmd+l into ctrl+f, so Zellij can map ctrl+f to 0x0C
 # (formfeed/ctrl+l), so that actual ctrl+l can be used for pane navigation
 #keybind = cmd+l=text:\x06
 
 # cmd+l => ctrl+l so we can use ctrl+[hjkl] for aerospace nav
-keybind = cmd+l=text:\x0C
+keybind = cmd+l=esc:sclear
+#keybind = cmd+l=csi:2J
 keybind = ctrl+enter=text:\r
 keybind = global:ctrl+backquote=toggle_quick_terminal
+keybind = cmd+k=toggle_command_palette
 quick-terminal-position = right
 quick-terminal-size = 42%,96%
 quick-terminal-autohide = true
@@ -70,3 +86,5 @@ macos-window-shadow = false
 #custom-shader=/Users/coxley/.config/ghostty/shaders/column.glsl
 link-previews = true
 shell-integration-features = true
+
+selection-word-chars = " '\"│`|;,()[]{}<>$"

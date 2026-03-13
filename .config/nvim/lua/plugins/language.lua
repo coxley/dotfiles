@@ -78,7 +78,7 @@ return {
             end
             gopls_cfg.settings = {
                 gopls = {
-                    remote = "auto",
+                    -- remote = "auto",
                     matcher = 'CaseInsensitive',
                     ['local'] = 'github.com/DataDog',
                     gofumpt = true,

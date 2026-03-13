@@ -66,3 +66,11 @@ function bindlist() {
   fi
 }
 compdef _gnu_generic bindlist
+
+# https://github.com/ghostty-org/ghostty/issues/905
+scroll_then_clear() { 
+    printf '\033[H\033[22J'
+    zle reset-prompt 
+}
+zle -N scroll_then_clear
+bindkey '^[sclear' scroll_then_clear
