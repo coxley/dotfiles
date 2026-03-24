@@ -43,7 +43,7 @@ unfocused-split-fill = 101010
 split-divider-color = aa2299
 focus-follows-mouse = true
 auto-update = check
-auto-update-channel = tip
+#auto-update-channel = tip
 # This would disable tabs and make it impossible to resize without Rectangle or similar
 # window-decoration = false
 
@@ -73,6 +73,8 @@ keybind = cmd+l=esc:sclear
 keybind = ctrl+enter=text:\r
 keybind = global:ctrl+backquote=toggle_quick_terminal
 keybind = cmd+k=toggle_command_palette
+palette-generate = true
+palette-harmonious = true
 quick-terminal-position = right
 quick-terminal-size = 42%,96%
 quick-terminal-autohide = true

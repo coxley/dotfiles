@@ -26,16 +26,13 @@ on-focus-changed = ['move-mouse window-lazy-center']
     # Spawn Ghostty on option-enter
     alt-enter = '''exec-and-forget osascript -e '
     tell application "Ghostty"
-	if it is running then
-		activate
-		tell application "System Events" to keystroke "n" using {command down}
-	else
-		activate
-	end if
+        set cfg to new surface configuration
+        set initial working directory of cfg to "/Users/codey.oxley/"
+        set win to new window with configuration cfg
     end tell'
     '''
-    # Spawn multiple terminals for a workspace
-    alt-shift-enter = 'exec-and-forget ~/.local/bin/aerospace_dev.sh'
+    # Create splits in focused ghostty tab
+    alt-shift-enter = 'exec-and-forget ~/.local/bin/ghostty_split.sh'
 
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
