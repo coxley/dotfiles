@@ -1,7 +1,11 @@
+# Close dialog is annoying, especially with cmd+z existing.
 confirm-close-surface = false
+link-previews = true
 
-# -- Font + Theme
 theme = "Catppuccin Mocha"
+palette-generate = true
+palette-harmonious = true
+
 # Unset any default fonts before declaring our own
 font-family =
 font-family = "Berkeley Mono"
@@ -9,33 +13,21 @@ font-style-bold = "SemiBold"
 font-style-italic = "SemiLight Oblique"
 font-style-bold-italic = "SemiBold Oblique"
 font-size = 13
+bold-is-bright = true
 
+# Berkeley-specific config
 font-feature = calt
 font-feature = liga
 font-feature = ccmp
 font-feature = locl
 font-feature = ss08
 
-alpha-blending = "linear-corrected"
-window-colorspace = display-p3
-window-save-state = always
-
-#scrollbar = never
-
-# TMP?
-bold-is-bright = true
-font-style = "Regular"
-#font-thicken = true
-#font-thicken-strength = 32
-
-# -- Clipboard + Cursor
 clipboard-read = "allow"
 copy-on-select = clipboard
 clipboard-paste-protection = false
 cursor-style = block
 cursor-style-blink = true
 
-# -- Window Settings
 background-opacity = 0.90
 background-blur-radius  = 10
 unfocused-split-opacity = 0.8
@@ -43,18 +35,15 @@ unfocused-split-fill = 101010
 split-divider-color = aa2299
 focus-follows-mouse = true
 auto-update = check
-#auto-update-channel = tip
-# This would disable tabs and make it impossible to resize without Rectangle or similar
-# window-decoration = false
 
+# Uncomment to get updates from master
+# auto-update-channel = tip
 
-# Prevent spewing control sequences when accidentally hitting ENTER while SHIFT or CTRL
-# is still held.
-#keybind = shift+enter=text:\n
+# Prevent spewing control sequences when accidentally hitting ENTER while CTRL is still
+# held
 keybind = ctrl+enter=text:\r
 
-# Work around physical vs. logical placement
-# https://github.com/ghostty-org/ghostty/discussions/7540
+# Dvorak: work around physical vs. logical placement (https://github.com/ghostty-org/ghostty/discussions/7540)
 keybind = cmd+equal=unbind
 keybind = cmd+bracket_left=unbind
 keybind = cmd+bracket_right=unbind
@@ -63,30 +52,20 @@ keybind = cmd+]=goto_split:next
 keybind = cmd+==increase_font_size:1
 keybind = cmd+-=decrease_font_size:1
 
-# HACK: Transforms cmd+l into ctrl+f, so Zellij can map ctrl+f to 0x0C
-# (formfeed/ctrl+l), so that actual ctrl+l can be used for pane navigation
-#keybind = cmd+l=text:\x06
-
-# cmd+l => ctrl+l so we can use ctrl+[hjkl] for aerospace nav
+# cmd+l => custom escape sequence
 keybind = cmd+l=esc:sclear
-#keybind = cmd+l=csi:2J
-keybind = ctrl+enter=text:\r
+
 keybind = global:ctrl+backquote=toggle_quick_terminal
-keybind = cmd+k=toggle_command_palette
-palette-generate = true
-palette-harmonious = true
 quick-terminal-position = right
 quick-terminal-size = 42%,96%
 quick-terminal-autohide = true
+keybind = cmd+k=toggle_command_palette
 
-# -- macos
 macos-option-as-alt = true
+# Looks better when using Aerospace
 macos-titlebar-style = hidden
 macos-window-shadow = false
-#minimum-contrast = 1.1
 
-#custom-shader=/Users/coxley/.config/ghostty/shaders/column.glsl
-link-previews = true
-shell-integration-features = true
-
+# Exclude ':' from selection boundary so that I can quickly select files with
+# linenumbers (path/to/file:123)
 selection-word-chars = " '\"│`|;,()[]{}<>$"

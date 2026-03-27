@@ -1,6 +1,6 @@
-#!/usr/bin/env zsh
+#!/usr/bin/osascript
 
-osascript -e '
+# Grab window dimensions to calculate pane sizes later
 global windowWidth
 global windowHeight
 tell application "System Events"
@@ -14,13 +14,21 @@ end tell
 tell application "Ghostty"
     activate
 
+    # Grab the focused window's active terminal tab
     set win to front window
     set term to focused terminal of selected tab of win
     set pwd to working directory of term
 
+    # Ensure each pane starts with the same working directory
     set cfg to new surface configuration
     set initial working directory of cfg to pwd
 
+    # Create a layout like this:
+    # ┌───┬──────┐
+    # │   │      │
+    # ├───┤      │
+    # │   │      │
+    # └───┴──────┘
     set rightPane to term
     set topLeft to split rightPane direction left with configuration cfg
     set bottomLeft to split topLeft direction down with configuration cfg
@@ -28,4 +36,4 @@ tell application "Ghostty"
     perform action "resize_split:down,"& windowHeight div 8 on topLeft
     perform action "resize_split:left," & windowWidth div 6 on rightPane
     focus rightPane
-end tell'
+end tell

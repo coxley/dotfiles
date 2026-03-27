@@ -32,7 +32,7 @@ on-focus-changed = ['move-mouse window-lazy-center']
     end tell'
     '''
     # Create splits in focused ghostty tab
-    alt-shift-enter = 'exec-and-forget ~/.local/bin/ghostty_split.sh'
+    alt-shift-enter = 'exec-and-forget ~/.local/bin/ghostty_split'
 
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
@@ -210,4 +210,8 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 [[on-window-detected]]
     if.app-id = 'com.apple.Preview'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.1password.1password'
     run = 'layout floating'
