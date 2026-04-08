@@ -27,11 +27,33 @@ typeset -A cd_aliases=(
 
 for key in "${(@k)cd_aliases}"; do
     function $key() {
-        cd "$cd_aliases[$0]/$1"
+        local dst="$cd_aliases[$0]/$1"
+        local repo_path=$(dirname $(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) 2>/dev/null)
+
+        # If destination is a child of the current repo, stay within the active
+        # worktree.
+        if [[ $repo_path != "" && $dst == "$repo_path"/* ]]; then
+            worktree_path=$(git rev-parse --show-toplevel)
+            cd $worktree_path/${dst#$repo_path}
+        else
+            cd $dst
+        fi
     }
 
     function _$key() {
-        ((CURRENT == 2)) && _files -/ -W "$cd_aliases[${0:1}]/"
+        ((CURRENT == 2)) && {
+            local dst="$cd_aliases[${0:1}]/"
+            local repo_path=$(dirname $(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) 2>/dev/null)
+
+            # If destination is a child of the current repo, stay within the active
+            # worktree.
+            if [[ $repo_path != "" && $dst == "$repo_path"/* ]]; then
+                worktree_path=$(git rev-parse --show-toplevel)
+                _files -/ -W $worktree_path/${dst#$repo_path}/
+            else
+                _files -/ -W $dst
+            fi
+        }
     }
 
     compdef _$key $key

@@ -603,7 +603,7 @@ switch {} := {}.(type) {{
                 end,
             },
             {
-                "onsails/lspkind-nvim",
+                "onsails/lspkind.nvim",
                 event = "VeryLazy",
                 config = function()
                     require('lspkind').init({
@@ -615,14 +615,14 @@ switch {} := {}.(type) {{
                         -- defines how annotations are shown
                         -- default: symbol
                         -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-                        mode = 'symbol_text',
+                        mode = 'text',
 
                         -- default symbol map
                         -- can be either 'default' (requires nerd-fonts font) or
                         -- 'codicons' for codicon preset (requires vscode-codicons font)
                         --
                         -- default: 'default'
-                        preset = 'codicons',
+                        preset = 'default',
 
                         -- override preset symbols
                         --

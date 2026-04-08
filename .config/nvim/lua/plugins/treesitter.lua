@@ -1,59 +1,72 @@
 return {
+    { 'MeanderingProgrammer/treesitter-modules.nvim' },
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false,
         build = ":TSUpdate",
         config = function()
-            require('nvim-treesitter.configs').setup({
-                modules = {},
-                ensure_installed = {
-                    "css",
-                    "earthfile",
-                    "go",
-                    "gotmpl",
-                    "html",
-                    "javascript",
-                    "lua",
-                    "markdown",
-                    "markdown_inline",
-                    "query",
-                    "typescript",
-                    "vim",
-                    "vimdoc",
-                    "zig",
-                },
-                sync_install = false,
-                auto_install = true,
-                ignore_install = { 'phpdoc' },
-
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = true,
-                    disable = function(lang, buf)
-                        -- Zig text input gets REALLY slow with highlight enabled for me
-                        if lang == "zig" then
-                            return false
-                        end
-                        local max_filesize = 100 * 1024 -- 100 KB
-                        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                        if ok and stats and stats.size > max_filesize then
-                            return true
-                        end
-                    end,
-                },
-                -- indent = {
-                --     enable = false
-                -- },
-            })
             vim.treesitter.language.register('gotmpl', 'gotmpl')
             vim.treesitter.language.register('markdown', 'vimwiki')
+
+            local treesitter = require("nvim-treesitter")
+            treesitter.setup({
+                -- Directory to install parsers and queries to
+                install_dir = vim.fn.stdpath("data") .. "/site",
+            })
+            vim.opt.foldlevel = 99
+            vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.wo[0][0].foldmethod = 'expr'
+
+
+            local ensure_installed = {
+                "bash",
+                "c",
+                "comment",
+                "css",
+                "diff",
+                "tiltfile",
+                "gitcommit",
+                "go",
+                "gomod",
+                "gotmpl",
+                "html",
+                "javascript",
+                "json",
+                "lua",
+                "luadoc",
+                "markdown",
+                "markdown_inline",
+                "python",
+                "query",
+                "sql",
+                "starlark",
+                "typescript",
+                "vim",
+                "vimdoc",
+                "yaml",
+                "zig",
+            }
+
+            require("treesitter-modules").setup({
+                ensure_installed = ensure_installed,
+                auto_install = true,
+                fold = { enable = false },
+                highlight = { enable = true },
+                indent = { enable = true },
+                incremental_selection = { enable = true },
+            })
+
+            require("nvim-treesitter-textobjects").setup()
+            require("treesitter-context").setup()
+
+            -- jump to context
+            vim.keymap.set("n", "[p", function()
+                require("treesitter-context").go_to_context(vim.v.count1)
+            end, { silent = true })
         end
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = "VeryLazy",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
         opts = {
             enable = true,         -- Enable this plugin (Can be enabled/disabled later via commands)
             max_lines = 0,         -- How many lines the window should span. Values <= 0 mean no limit.
@@ -80,29 +93,69 @@ return {
     },
     {
         "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
+        branch = "main",
+        init = function()
+            -- Disable entire built-in ftplugin mappings to avoid conflicts.
+            -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+            vim.g.no_plugin_maps = true
+
+            -- Or, disable per filetype (add as you like)
+            -- vim.g.no_python_maps = true
+            -- vim.g.no_ruby_maps = true
+            -- vim.g.no_rust_maps = true
+            -- vim.g.no_go_maps = true
+        end,
         config = function()
-            require 'nvim-treesitter.configs'.setup({
-                textobjects = {
-                    swap = {
-                        enable = true,
-                        swap_next = {
-                            ["<leader>s"] = "@parameter.inner",
-                        },
-                        swap_previous = {
-                            ["<leader><leader>s"] = "@parameter.inner",
-                        },
+            require("nvim-treesitter-textobjects").setup {
+                select = {
+                    -- Automatically jump forward to textobj, similar to targets.vim
+                    lookahead = true,
+                    -- You can choose the select mode (default is charwise 'v')
+                    --
+                    -- Can also be a function which gets passed a table with the keys
+                    -- * query_string: eg '@function.inner'
+                    -- * method: eg 'v' or 'o'
+                    -- and should return the mode ('v', 'V', or '<c-v>') or a table
+                    -- mapping query_strings to modes.
+                    selection_modes = {
+                        ['@parameter.outer'] = 'v', -- charwise
+                        ['@function.outer'] = 'V',  -- linewise
+                        -- ['@class.outer'] = '<c-v>', -- blockwise
                     },
+                    -- If you set this to `true` (default is `false`) then any textobject is
+                    -- extended to include preceding or succeeding whitespace. Succeeding
+                    -- whitespace has priority in order to act similarly to eg the built-in
+                    -- `ap`.
+                    --
+                    -- Can also be a function which gets passed a table with the keys
+                    -- * query_string: eg '@function.inner'
+                    -- * selection_mode: eg 'v'
+                    -- and should return true of false
+                    include_surrounding_whitespace = false,
                 },
-            })
-        end
+            }
+
+            vim.keymap.set({ "x", "o" }, "af", function()
+                require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "if", function()
+                require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "as", function()
+                require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
+            end)
+            vim.keymap.set({ "x", "o" }, "is", function()
+                require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
+            end)
+            vim.keymap.set("n", "<leader>s", function()
+                require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
+            end)
+            vim.keymap.set("n", "<leader>S", function()
+                require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.inner"
+            end)
+        end,
     },
 }

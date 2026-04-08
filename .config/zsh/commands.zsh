@@ -17,6 +17,7 @@ alias pprof_http='go tool pprof -http localhost:$(random_port)'
 
 alias ga='git add -A'
 alias gs='git status'
+alias gds='git diff --stat'
 alias gc='git checkout'
 alias gl='git log'
 alias rg='rg --no-heading'
@@ -34,6 +35,7 @@ alias ls='eza --group-directories-first'
 alias ll='ls -l'
 alias lls='ll --total-size'
 alias tree='eza -T'
+alias xxd='xxd -R always'
 
 # Generated random port for things that don't support :0
 function random_port() {
