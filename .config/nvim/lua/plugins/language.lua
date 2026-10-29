@@ -74,14 +74,45 @@ return {
                     "https://depot-read-api-go.us1.ddbuild.io/magicmirror/magicmirror/@current/|https://depot-read-api-go.us1.ddbuild.io/magicmirror/testing/@current/",
                     GONOSUMDB = "github.com/DataDog,go.ddbuild.io",
                     GOPRIVATE = "",
+                    -- GOPACKAGESDRIVER = "tools/go-packagedriver/gopackagesdriver.sh",
+                    -- GOPACKAGESDRIVER = "bazel-bin/tools/go-packagedriver/go-packagedriver_/go-packagedriver",
                 }
             end
             gopls_cfg.settings = {
                 gopls = {
+                    buildFlags = { "-buildvcs=false" },
+                    directoryFilters = {
+                        "-**/node_modules",
+                        "-**/bin",
+                        "-**/bazel-bin",
+                        "-**/bazel-out",
+                        "-**/bazel-testlogs",
+                        "-**/bazel-dd-source",
+                        "-**/bazel-dd-source-1",
+                        "-**/bazel-dd-source-2",
+                        "-**/bazel-dd-source-3",
+                        "-**/bazel-dd-source-4",
+                        "-**/bazel-dd-source-5",
+                        "-**/bazel-dd-source-6",
+                        "-**/bazel-dd-source-7",
+                        "-**/bazel-dd-source-8",
+                        "-**/bazel-bin",
+                        "-**/bazel-dd-source",
+                        "-**/bazel-out",
+                        "-**/bazel-testlogs",
+                    },
+                    indexedDomains = {
+                        "unifiedkv",
+                        "ephemera",
+                        "cassandra",
+                    },
                     -- remote = "auto",
                     matcher = 'CaseInsensitive',
+                    hoverKind = "FullDocumentation",
+                    -- hoverKind = "SynopsisDocumentation",
                     ['local'] = 'github.com/DataDog',
                     gofumpt = true,
+                    maxFileCacheBytes = 1073741824,
                     semanticTokens = true,
                     semanticTokenModifiers = {
                         string = false,
@@ -95,7 +126,6 @@ return {
                     },
                     analyses = {
                         unusedparams = false,
-                        -- fieldalignment = true,
                         nilness = true,
                         unusedwrite = true,
                         useany = true,

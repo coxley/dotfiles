@@ -3,8 +3,7 @@ confirm-close-surface = false
 link-previews = true
 
 theme = "Catppuccin Mocha"
-palette-generate = true
-palette-harmonious = true
+#theme = "Catppuccin Latte"
 
 # Unset any default fonts before declaring our own
 font-family =
@@ -13,7 +12,10 @@ font-style-bold = "SemiBold"
 font-style-italic = "SemiLight Oblique"
 font-style-bold-italic = "SemiBold Oblique"
 font-size = 13
-bold-is-bright = true
+bold-color = bright
+
+window-colorspace = display-p3
+window-padding-color = extend
 
 # Berkeley-specific config
 font-feature = calt
@@ -28,8 +30,8 @@ clipboard-paste-protection = false
 cursor-style = block
 cursor-style-blink = true
 
-background-opacity = 0.90
-background-blur-radius  = 10
+background-blur = macos-glass-clear
+background-opacity = 0.85
 unfocused-split-opacity = 0.8
 unfocused-split-fill = 101010
 split-divider-color = aa2299
@@ -37,11 +39,11 @@ focus-follows-mouse = true
 auto-update = check
 
 # Uncomment to get updates from master
-# auto-update-channel = tip
+ auto-update-channel = stable
 
 # Prevent spewing control sequences when accidentally hitting ENTER while CTRL is still
 # held
-keybind = ctrl+enter=text:\r
+#keybind = ctrl+enter=text:\r
 
 # Dvorak: work around physical vs. logical placement (https://github.com/ghostty-org/ghostty/discussions/7540)
 keybind = cmd+equal=unbind
@@ -51,6 +53,8 @@ keybind = cmd+[=goto_split:previous
 keybind = cmd+]=goto_split:next
 keybind = cmd+==increase_font_size:1
 keybind = cmd+-=decrease_font_size:1
+keybind = super+a=unbind
+keybind = super+enter=unbind
 
 # cmd+l => custom escape sequence
 keybind = cmd+l=esc:sclear
@@ -61,11 +65,21 @@ quick-terminal-size = 42%,96%
 quick-terminal-autohide = true
 keybind = cmd+k=toggle_command_palette
 
+# Override the native 'edit config' shortcut with the CLI action, respecting ${VISUAL:-${EDITOR}}
+#   1. `\x1bq` runs the zsh `push-line-or-edit` widget (bound to alt-q)
+#   2. `ghostty +edit-config` is sent to the shell prompt
+#   3. `\x0d` enters/executes the command currently on the prompt
+keybind = unconsumed:super+,=text:\x1bqghostty +edit-config\x0d
+
 macos-option-as-alt = true
 # Looks better when using Aerospace
-macos-titlebar-style = hidden
+#macos-titlebar-style = hidden
+macos-window-buttons = hidden
 macos-window-shadow = false
+macos-titlebar-style = tabs
 
 # Exclude ':' from selection boundary so that I can quickly select files with
 # linenumbers (path/to/file:123)
 selection-word-chars = " '\"│`|;,()[]{}<>$"
+
+undo-timeout = "15s"

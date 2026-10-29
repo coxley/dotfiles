@@ -17,10 +17,15 @@ alias pprof_http='go tool pprof -http localhost:$(random_port)'
 
 alias ga='git add -A'
 alias gs='git status'
-alias gds='git diff --stat'
+alias gds='git --no-pager diff --stat'
 alias gc='git checkout'
-alias gl='git log'
+alias gl='git prlog'
+alias gtl='gt ls --stack'
 alias rg='rg --no-heading'
+if [[ $REX_SESSION ]]; then
+ alias rg="rg --no-heading --hyperlink-format='rexfile://{path}:{line}:{column}?session_id=$REX_SESSION&block_id=$REX_BLOCK'"
+fi
+alias kubectl=kubecolor
 alias k='kubectl'
 alias kns='kubens'
 alias ktx='kubectx'
@@ -277,4 +282,3 @@ function clone() {
 
     cd $dir
 }
-

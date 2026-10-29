@@ -74,3 +74,4 @@ scroll_then_clear() {
 }
 zle -N scroll_then_clear
 bindkey '^[sclear' scroll_then_clear
+bindkey '^L' scroll_then_clear

@@ -21,5 +21,10 @@ vim.filetype.add({
     extension = {
         tmpl = "gotmpl",
         htmpl = "gohtmltmpl",
-    }
+    },
+    pattern = {
+        [".*/templates/.*%.ya?ml"] = "gotmpl",
+        [".*/templates/.*%.tpl"] = "gotmpl",
+        [".*%.ya?ml%.tmpl"] = "gotmpl",
+    },
 })

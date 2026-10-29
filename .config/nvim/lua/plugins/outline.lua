@@ -12,7 +12,7 @@ return {
         opts = {
             symbols = {
                 icon_source = 'lspkind',
-            }
+            },
         },
     },
 }

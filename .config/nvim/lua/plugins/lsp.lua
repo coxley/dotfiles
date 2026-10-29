@@ -43,21 +43,9 @@ return {
         opts = {},
         config = function()
             vim.diagnostic.enable(true)
-            vim.diagnostic.config({ virtual_text = true })
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics, {
-                    underline = true,
-                    -- This sets the spacing and the prefix, obviously.
-                    virtual_text = {
-                        spacing = 4,
-                        prefix = '',
-                    }
-                }
-            )
 
             -- Stylelint
             vim.lsp.config("stylelint_lsp", {
@@ -68,7 +56,6 @@ return {
                     },
                 },
             })
-
             -- Zig
             vim.lsp.config('zls', {})
             vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
@@ -90,6 +77,12 @@ return {
             })
 
             vim.lsp.config('gopls', {})
+            vim.lsp.config('protols', {})
+            vim.lsp.config('rust_analyzer', {
+                settings = {
+                    ['rust-analyzer'] = {},
+                },
+            })
             vim.lsp.config('lua_ls', {
                 settings = {
                     Lua = {
@@ -100,7 +93,12 @@ return {
                             enable = false,
                             semicolon = "Disable",
                             paramName = "Disable",
-                        }
+                        },
+                        workspace = {
+                            library = {
+                                vim.fn.expand("~/.config/dg/lua/types"),
+                            },
+                        },
                     }
                 }
             })
@@ -148,11 +146,6 @@ return {
                 "zls",
             },
         },
-    },
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        opts = {},
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
@@ -306,5 +299,89 @@ return {
         config = function()
             require("trouble").setup()
         end
+    },
+    {
+        "onsails/lspkind.nvim",
+        event = "VeryLazy",
+        config = function()
+            require('lspkind').init({
+                -- DEPRECATED (use mode instead): enables text annotations
+                --
+                -- default: true
+                -- with_text = true,
+
+                -- defines how annotations are shown
+                -- default: symbol
+                -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+                mode = 'text',
+
+                -- default symbol map
+                -- can be either 'default' (requires nerd-fonts font) or
+                -- 'codicons' for codicon preset (requires vscode-codicons font)
+                --
+                -- default: 'default'
+                preset = 'default',
+
+                -- override preset symbols
+                --
+                -- default: {}
+                symbol_map = {
+                    Text = "󰉿",
+                    Method = "󰊕",
+                    Function = "󰊕",
+                    Constructor = "",
+                    Field = "󰜢",
+                    Variable = "󰀫",
+                    Class = "󰠱",
+                    Interface = "",
+                    Module = "",
+                    Property = "󰜢",
+                    Unit = "󰑭",
+                    Value = "󰎠",
+                    Enum = "",
+                    Keyword = "󰌋",
+                    Snippet = "",
+                    Color = "󰏘",
+                    File = "󰈙",
+                    Reference = "󰈇",
+                    Folder = "󰉋",
+                    EnumMember = "",
+                    Constant = "󰏿",
+                    Struct = "󰙅",
+                    Event = "",
+                    Operator = "󰆕",
+                    TypeParameter = "",
+                },
+            })
+        end
+    },
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+        },
+        config = function()
+            require("lsp_lines").setup()
+
+            local lines = true
+            local toggle = function()
+                lines = not lines
+                local virtual_text = lines
+                if not virtual_text then
+                    virtual_text = {
+                        spacing = 4,
+                        prefix = "",
+                    }
+                end
+                vim.diagnostic.config({
+                    underline = true,
+                    virtual_lines = lines,
+                    virtual_text = virtual_text,
+                })
+            end
+
+            toggle()
+            vim.keymap.set("n", "<Leader>xt", toggle, { desc = "Toggle multiline diagnostics" })
+        end,
     },
 }

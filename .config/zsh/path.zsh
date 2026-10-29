@@ -16,3 +16,9 @@ PATH="$PATH:/Users/$USER/.local/bin"
 PATH="$PATH:/Users/$USER/.cargo/bin"
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+PATH="$PATH:/opt/dogbrew/bin"
+PATH="$PATH:$HOME/dd/devtools/bin"
+
+if [ -n "${REX_BIN_DIR:-}" ]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi

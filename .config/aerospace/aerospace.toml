@@ -97,7 +97,7 @@ on-focus-changed = ['move-mouse window-lazy-center']
 [[on-window-detected]]
     if.app-id="com.mitchellh.ghostty"
     run= [
-    "layout tiling",
+    "layout floating",
     ]
 
 [[on-window-detected]]
@@ -214,4 +214,12 @@ on-focus-changed = ['move-mouse window-lazy-center']
 
 [[on-window-detected]]
     if.app-id = 'com.1password.1password'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Console'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Dictionary'
     run = 'layout floating'

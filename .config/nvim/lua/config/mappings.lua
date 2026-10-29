@@ -70,3 +70,6 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection UP" })
 
 map('n', '<C-n>', ':cnext<CR>', options)
 map('n', '<C-p>', ':cprevious<CR>', options)
+
+vim.keymap.set('n', '<X1Mouse>', '<C-O>', { noremap = true, silent = true })
+vim.keymap.set('n', '<X2Mouse>', '<C-I>', { noremap = true, silent = true })

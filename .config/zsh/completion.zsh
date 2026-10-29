@@ -1,6 +1,12 @@
 # Do menu-driven completion.
 zstyle ':completion:*' menu select
 
+# match uppercase from lowercase
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+ 
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
 # Color completion for some things.
 # http://linuxshellaccount.blogspot.com/2008/12/color-completion-using-zsh-modules-on.html
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -150,3 +156,5 @@ function wadd() {
     mkdir -p $owner_path/worktrees
     git worktree add --no-detach $worktree_path-$1 origin/main
 }
+
+compdef kubecolor=kubectl
