@@ -28,9 +28,11 @@ PATH="$PATH:$HOME/dd/devtools/bin"
 # Linux workspaces set tool dirs (python, dogbrew shims, multiplexer shims)
 # in the login PATH; keep them ahead of the list above.
 [[ $OSTYPE == linux* ]] && PATH="$inherited:$PATH"
-# rustup's proxies must beat the image's /usr/bin/cargo (too old for dd-source).
-[[ $OSTYPE == linux* ]] && PATH="$HOME/.cargo/bin:$PATH"
+# rustup's proxies must beat the image's /usr/bin/cargo (too old for dd-source),
+# and ~/.local/bin its protoc, xclip and xdg-open, even when the inherited PATH
+# lacks them.
+[[ $OSTYPE == linux* ]] && PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
-if [ -n "${REX_BIN_DIR:-}" ]; then
+if [[ -n ${REX_BIN_DIR:-} && :$PATH: != *:$REX_BIN_DIR:* ]]; then
     export PATH="$REX_BIN_DIR:$PATH"
 fi
