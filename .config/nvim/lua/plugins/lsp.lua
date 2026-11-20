@@ -78,11 +78,54 @@ return {
 
             vim.lsp.config('gopls', {})
             vim.lsp.config('protols', {})
+            -- lspmux (launchd: com.coxley.lspmux; Linux: zsh init.zsh) shares one rust-analyzer per workspace
+            -- across nvim instances. rustup's proxy honors rust-toolchain.toml, so
+            -- rust-analyzer matches the toolchain's std; Mason's copy drifts.
+            --
+            -- Default: cargo-subspace loads only the open file's crate and its dependencies,
+            -- so large workspaces start fast. Dependent crates stay unloaded: references and
+            -- renames that cross into them are missed. `RA_FULL=1 nvim` loads the whole
+            -- workspace; lspmux keeps the modes apart (pass_environment = ["RA_FULL"]).
+            -- `env -u CARGO_HOME`: rustup sets it, and cargo-subspace then looks for
+            -- $CARGO_HOME/bin/cargo, but Homebrew's rustup keeps its proxies elsewhere.
+            local subspace = { 'env', '-u', 'CARGO_HOME', vim.fn.expand('~/.cargo/bin/cargo-subspace') }
+            local full = vim.env.RA_FULL == '1' or vim.fn.executable(subspace[4]) == 0
+            -- rustup's proxies: Homebrew keeps them keg-only; a Linux rustup uses ~/.cargo/bin.
+            local ra = '/opt/homebrew/opt/rustup/bin/rust-analyzer'
+            if vim.fn.executable(ra) == 0 then ra = vim.fn.expand('~/.cargo/bin/rust-analyzer') end
+            local rustCfg = {
+                inlayHints = {
+                    typeHints = {
+                        enable = false,
+                    },
+                    parameterHints = {
+                        enable = false,
+                    },
+                },
+            }
+            if full then
+                rustCfg["check"] = { command = 'clippy' }
+            else
+                rustCfg["check"] = {
+                    overrideCommand = vim.list_extend(vim.list_slice(subspace), { 'clippy', '$saved_file' }),
+
+                }
+                rustCfg["workspace"] = {
+                    discoverConfig = {
+                        command = vim.list_extend(vim.list_slice(subspace), { 'discover', '{arg}' }),
+                        progressLabel = 'cargo-subspace',
+                        filesToWatch = { 'Cargo.toml' },
+                    },
+
+                }
+            end
             vim.lsp.config('rust_analyzer', {
+                cmd = { 'lspmux', 'client', '--server-path', ra },
                 settings = {
-                    ['rust-analyzer'] = {},
+                    ['rust-analyzer'] = rustCfg,
                 },
             })
+            vim.lsp.enable('rust_analyzer')
             vim.lsp.config('lua_ls', {
                 settings = {
                     Lua = {
@@ -106,7 +149,7 @@ return {
             local util = require('lspconfig.util')
             configs.protobuf_language_server = {
                 default_config = {
-                    cmd = { '/Users/coxley/.go/bin/protobuf-language-server' },
+                    cmd = { 'protobuf-language-server' },
                     filetypes = { 'proto' },
                     root_dir = util.root_pattern('.git'),
                     single_file_support = true,
@@ -141,14 +184,14 @@ return {
         opts = {
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
                 "gopls",
                 "zls",
             },
         },
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        -- Maintained fork of the deleted jose-elias-alvarez/null-ls.nvim; same module name.
+        "nvimtools/none-ls.nvim",
         ft = { "javascript", "javascriptreact", "typescriptreact", "typescript" },
         config = function()
             local null_ls = require("null-ls")

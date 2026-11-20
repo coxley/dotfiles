@@ -252,6 +252,6 @@ ZSH="$(-zgen-get-clone-dir robbyrussell/oh-my-zsh master)"
 zgen-init
 fpath=($ZGEN_SOURCE $fpath)
 
-autoload -U compinit
-compinit -d "${ZGEN_DIR}/zcompdump"
+# compinit runs once in ~/.zshrc, after all fpath changes. Remove any
+# compinit call added here: a second call rewrites the dump every shell.
 

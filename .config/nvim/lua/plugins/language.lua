@@ -70,9 +70,9 @@ return {
                 gopls_cfg.cmd = { 'dd-gopls' }
                 gopls_cfg.cmd_env = {
                     GOPLS_DISABLE_MODULE_LOADS = 1,
-                    GOPROXY =
-                    "https://depot-read-api-go.us1.ddbuild.io/magicmirror/magicmirror/@current/|https://depot-read-api-go.us1.ddbuild.io/magicmirror/testing/@current/",
-                    GONOSUMDB = "github.com/DataDog,go.ddbuild.io",
+                    -- ~/.zsh_work holds the Datadog proxy settings. Unset, gopls inherits the shell's.
+                    GOPROXY = vim.env.DD_GOPLS_GOPROXY,
+                    GONOSUMDB = vim.env.DD_GOPLS_GONOSUMDB,
                     GOPRIVATE = "",
                     -- GOPACKAGESDRIVER = "tools/go-packagedriver/gopackagesdriver.sh",
                     -- GOPACKAGESDRIVER = "bazel-bin/tools/go-packagedriver/go-packagedriver_/go-packagedriver",
@@ -101,11 +101,8 @@ return {
                         "-**/bazel-out",
                         "-**/bazel-testlogs",
                     },
-                    indexedDomains = {
-                        "unifiedkv",
-                        "ephemera",
-                        "cassandra",
-                    },
+                    -- Comma-separated dd-source domains from ~/.zsh_work; unset leaves dd-gopls' default.
+                    indexedDomains = vim.env.DD_GOPLS_DOMAINS and vim.split(vim.env.DD_GOPLS_DOMAINS, ",", { trimempty = true }) or nil,
                     -- remote = "auto",
                     matcher = 'CaseInsensitive',
                     hoverKind = "FullDocumentation",

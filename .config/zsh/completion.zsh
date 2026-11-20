@@ -1,6 +1,26 @@
 # Do menu-driven completion.
 zstyle ':completion:*' menu select
 
+# Completion behavior from oh-my-zsh lib/completion.zsh: fuzzy substring
+# matching (r:|=* makes .proto match admin.proto), menu on successive TAB,
+# in-word completion, cursor to end after completion.
+unsetopt menu_complete
+setopt auto_menu complete_in_word always_to_end
+unsetopt flowcontrol
+zmodload -i zsh/complist
+bindkey -M menuselect '^o' accept-and-infer-next-history
+if [[ $CASE_SENSITIVE = true ]]; then
+    zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+else
+    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
+fi
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+
 # match uppercase from lowercase
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
  
@@ -20,7 +40,9 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 # zstyle ':completion:*' group-name ''
 
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+if [[ $commands[kubectl] ]]; then
+    _cached_eval kubectl ${commands[kubectl]} kubectl completion zsh
+fi
 # Motivation: https://hacdias.com/2021/05/30/cd-alias-completions-zsh/
 typeset -A cd_aliases=(
     [dcd]="$HOME/Code/github.com/DataDog/dd-source"
@@ -84,7 +106,7 @@ done
 if (( ${+DATADOG_ROOT} )); then
     compdef _bazel bzl
 
-    mkdir -p ~/.cache/zsh
+    [[ -d ~/.cache/zsh ]] || mkdir -p ~/.cache/zsh
     zstyle ':completion:*' use-cache on
     zstyle ':completion:*' cache-path ~/.cache/zsh/cache
 fi
@@ -97,8 +119,31 @@ function w() {
     git worktree $*
 }
 
-(( $+functions[_git-worktree] )) || _git &>/dev/null
-compdef _git-worktree w
+# Complete git from zsh's native _git rather than brew's bash-completion
+# bridge: only the native version defines the _git-* subcommand functions,
+# including _git-worktree for the `w` wrapper below. Direct sourcing
+# parses with user options and fails, so load it via autoload from the
+# system functions dir.
+_fpath=($fpath)
+fpath=(/usr/share/zsh/5.9/functions $fpath)
+autoload -Uz +X _git
+fpath=($_fpath)
+unset _fpath
+
+# Executing _git defines its subcommand functions, but that costs over
+# 100ms, so run it on the first completion of `w` instead of at startup.
+# The anonymous function keeps the bootstrap's service/CURRENT overrides
+# from leaking into _git-worktree's completion state.
+_w() {
+    if (( ! $+functions[_git-worktree] )); then
+        () {
+            local service=__w_bootstrap CURRENT=1
+            _git &>/dev/null
+        }
+    fi
+    _git-worktree "$@"
+}
+compdef _w w
 
 function wcd() {
     repo_path=$(dirname $(git rev-parse --path-format=absolute --git-common-dir))

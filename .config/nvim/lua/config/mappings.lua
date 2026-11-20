@@ -73,3 +73,16 @@ map('n', '<C-p>', ':cprevious<CR>', options)
 
 vim.keymap.set('n', '<X1Mouse>', '<C-O>', { noremap = true, silent = true })
 vim.keymap.set('n', '<X2Mouse>', '<C-I>', { noremap = true, silent = true })
+
+-- Rex: floating pane running `go test ./...` from the vim cwd.
+-- First press creates it; later presses queue a fresh run into it.
+vim.keymap.set('n', '<leader>T', function()
+  local sid = os.getenv('REX_SESSION')
+  local bid = os.getenv('REX_BLOCK')
+  if not sid or not bid then
+    vim.notify('go-test: not inside a Rex pane (REX_SESSION/REX_BLOCK missing)', vim.log.levels.WARN)
+    return
+  end
+  vim.system({ 'rex', 'do', '-s', sid, 'go_test', '--args',
+    vim.json.encode({ block_id = bid, cwd = vim.fn.getcwd() }) })
+end, { desc = 'Rex: go test ./... in floating pane' })

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Keeps the Rex and ssh-agent tunnels to the workspace alive; see ws-tunnels. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.coxley.ws-tunnels</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/codey.oxley/.local/bin/ws-tunnels</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/codey.oxley/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS:/opt/dogbrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>StartInterval</key>
+    <integer>60</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <!-- The tunnels are `ssh -f` daemons and must outlive each run. -->
+    <key>AbandonProcessGroup</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/codey.oxley/Library/Logs/ws-tunnels.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/codey.oxley/Library/Logs/ws-tunnels.log</string>
+</dict>
+</plist>

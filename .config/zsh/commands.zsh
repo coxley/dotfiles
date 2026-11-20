@@ -41,6 +41,11 @@ alias ll='ls -l'
 alias lls='ll --total-size'
 alias tree='eza -T'
 alias xxd='xxd -R always'
+alias history="atuin history list --format '{duration}\t{command}'"
+
+# --no-sandbox belongs to the shadowfax pi wrapper (macOS only).
+[[ -d /opt/shadowfax ]] && alias pi='pi --no-sandbox'
+alias pir='pi --resume'
 
 # Generated random port for things that don't support :0
 function random_port() {
@@ -281,4 +286,18 @@ function clone() {
     esac
 
     cd $dir
+}
+
+# Usage: status <state> <msg>
+#
+# States:
+#   - state
+#   - idle
+#   - working
+#   - done
+#   - blocked
+#   - error
+#   - clear
+function status() {
+  printf '\e]7501;state=%s:msg=%s\e\\' "$1" "$(printf '%s' "$2" | base64 | tr -d '\n')"
 }

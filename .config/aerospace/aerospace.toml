@@ -16,7 +16,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Mouse lazily follows any focus (window or workspace)
-on-focus-changed = ['move-mouse window-lazy-center']
+# on-focus-changed = ['move-mouse window-lazy-center']
 
 # Keybindings are converted to hardware codes, so need to set dvorak preset.
 [key-mapping]
@@ -83,22 +83,22 @@ on-focus-changed = ['move-mouse window-lazy-center']
     alt-shift-c = 'reload-config'
 
 [gaps]
-    inner.horizontal = [{monitor."built-in"= 4}, 8]
-    inner.vertical =   [{monitor."built-in"= 4}, 8]
-    outer.left =       [{monitor."built-in"= 4}, 24]
-    outer.bottom =     [{monitor."built-in"= 4}, 24]
-    outer.top =        [{monitor."built-in"= 4}, 24]
-    outer.right =      [{monitor."built-in"= 4}, 24]
+    inner.horizontal = [{monitor."built-in"= 4},{monitor."Sidecar Display"=2}, 8]
+    inner.vertical =   [{monitor."built-in"= 4},{monitor."Sidecar Display"=2}, 8]
+    outer.left =       [{monitor."built-in"= 4},{monitor."Sidecar Display"=4}, 24]
+    outer.bottom =     [{monitor."built-in"= 4},{monitor."Sidecar Display"=2}, 24]
+    outer.top =        [{monitor."built-in"= 4},{monitor."Sidecar Display"=4}, 24]
+    outer.right =      [{monitor."built-in"= 4},{monitor."Sidecar Display"=4}, 24]
 
 [workspace-to-monitor-force-assignment]
     1 = 'secondary'
 
 
-[[on-window-detected]]
-    if.app-id="com.mitchellh.ghostty"
-    run= [
-    "layout floating",
-    ]
+# [[on-window-detected]]
+#     if.app-id="com.mitchellh.ghostty"
+#     run= [
+#     "layout floating",
+#     ]
 
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'

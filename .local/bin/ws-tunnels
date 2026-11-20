@@ -1,0 +1,43 @@
+#!/bin/zsh
+# Usage: ws-tunnels [host]
+#
+# Restart the ssh tunnels a Rex workspace host needs, skipping live ones:
+#   - Rex control: the local socket the Rex host entry points at.
+#   - ssh agent: Rex's `ssh -N` tunnel forwards no agent, so Rex panes on the
+#     workspace have none. The workspace links ~/.ssh/ssh_auth_sock to any
+#     live /tmp/ssh-*/agent.* socket, so a forward to that pattern fills in.
+#
+# Health checks open no ssh connection, and a workspace that is not
+# PROVISIONED is left alone: the ssh config's ProxyCommand would resume it.
+# Prints only when it acts, so launchd logs stay small.
+emulate -L zsh
+
+host=${1:-workspace-coxley-x86}
+rex_sock=~/.local/state/rex/$host.sock
+agent_sock=/tmp/ssh-rexagent/agent.rex
+opts=(-f -N -S none -o BatchMode=yes -o ExitOnForwardFailure=no -o ServerAliveInterval=30)
+
+rex -S unix://$rex_sock --timeout 3s server status &>/dev/null && rex_ok=1
+pgrep -f -- "-R $agent_sock:.* $host\$" >/dev/null && agent_ok=1
+(( rex_ok && agent_ok )) && exit 0
+
+state=$(workspaces list --no-color 2>/dev/null | awk -v n=${host#workspace-} '$1 == n { print $3 }')
+if [[ $state != PROVISIONED ]]; then
+    print "$(date '+%F %T') $host is ${state:-unknown}; not restarting tunnels"
+    exit 0
+fi
+
+if (( ! rex_ok )); then
+    pkill -f -- "-L $rex_sock:"
+    remote_home=$(ssh -o RequestTTY=no $host 'echo $HOME' 2>/dev/null) || exit 1
+    ssh $opts -o StreamLocalBindUnlink=yes \
+        -L $rex_sock:$remote_home/.local/state/rex/run/server.sock $host </dev/null &>/dev/null
+    print "$(date '+%F %T') rex tunnel: restarted"
+fi
+
+if (( ! agent_ok )); then
+    # sshd never replaces an existing socket file; remove a stale one first.
+    ssh -o RequestTTY=no $host "mkdir -p -m 700 ${agent_sock:h} && rm -f $agent_sock" &>/dev/null || exit 1
+    ssh $opts -R $agent_sock:$SSH_AUTH_SOCK $host </dev/null &>/dev/null
+    print "$(date '+%F %T') agent tunnel: restarted"
+fi

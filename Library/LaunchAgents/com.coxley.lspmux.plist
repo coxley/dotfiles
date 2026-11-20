@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Shares one rust-analyzer per workspace across nvim instances; see lspmux. -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.coxley.lspmux</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/opt/lspmux/bin/lspmux</string>
+        <string>server</string>
+    </array>
+    <!-- rust-analyzer inherits this PATH; it must find rustup's cargo/rustc proxies. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/opt/rustup/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/codey.oxley/Library/Logs/lspmux.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/codey.oxley/Library/Logs/lspmux.log</string>
+</dict>
+</plist>

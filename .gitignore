@@ -1,2 +1,5 @@
 *.swp
 *.swo
+.DS_Store
+# lazy.nvim rewrites it on every plugin update; each machine keeps its own.
+.config/nvim/lazy-lock.json

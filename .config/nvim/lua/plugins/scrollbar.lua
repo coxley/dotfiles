@@ -35,7 +35,8 @@ return {
                 },
                 scrollbar = {
                     placement = {
-                        gutter = "inner",
+                        gutter = "outer",
+                        relative = "window",
                         anchor = "NE",
                         zindex = 10,
                     },

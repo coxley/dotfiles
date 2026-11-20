@@ -1,0 +1,7 @@
+# Keep idle rust-analyzer instances for 8h (default 5m), so a fresh nvim
+# reuses a warm index. Costs the instance's memory while idle.
+instance_timeout = 28800
+
+# Instances match on these client variables too. RA_FULL=1 (nvim lsp.lua) loads
+# the whole Cargo workspace; it must not reuse a cargo-subspace instance.
+pass_environment = ["RA_FULL"]

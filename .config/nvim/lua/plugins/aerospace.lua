@@ -1,6 +1,7 @@
 return {
     {
         'coxley/aerospace-focus.nvim',
+        cond = vim.fn.has('mac') == 1,
         -- Required when sharing the same keybinds as aerospace, as it will swallow the
         -- keypress before lazy.nvim has a chance to load the plugin.
         lazy = false,

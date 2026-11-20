@@ -22,7 +22,7 @@ function _coxley_ensure_tools() {
         [rumdl]=rumdl
         [eza]=eza
     )
-    for key value in ${(kv)ENSURE_TOOLS_GO}; do
+    for key value in ${(kv)ENSURE_TOOLS_RS}; do
         if ! (( $+commands[$key] )); then
             cargo install $value
         fi

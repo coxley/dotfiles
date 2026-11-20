@@ -1,0 +1,119 @@
+# Shared git settings. Git reads this file before ~/.gitconfig, which holds each
+# machine's own settings (email, signing key, work includes) and overrides these.
+
+# Disable: git config --global --unset 'url.git@github.com:.insteadof'
+[url "ssh://git@github.com/"]
+	insteadof = https://github.com/
+[user]
+	name = Codey Oxley
+
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = -version:refname
+[init]
+	defaultBranch = master
+[merge]
+	conflictStyle = diff3
+
+; Previous
+; [diff]
+; 	colorMoved = default
+; 	algorithm = histogram
+; 	submodule = log
+; 	colorMovedWS = allow-indentation-change
+[diff]
+	algorithm = histogram
+	colorMoved = dimmed-zebra
+	mnemonicPrefix = true
+	renames = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+	gpgsign = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[core]
+	pager = delta
+	abbrev = 7
+	fsmonitor = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	side-by-side = true
+	hyperlinks = true
+	hyperlink = true
+[status]
+	submoduleSummary = true
+[submodule]
+	recurse = true
+[log]
+	date = iso
+	abbrevCommit = true
+[pretty]
+	changelog = %C(yellow)%as%Creset %Cgreen%h%Creset %C(cyan)%<(15,trunc)%aN%Creset %s
+	tags = format:%d - %cr
+[format]
+	pretty = changelog
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[pager]
+	prlog = less -XF
+	log = less -XF
+	diff = hunk pager
+[alias]
+	tl = "log --tags --simplify-by-decoration --pretty=\"format:%d - %cr\" -n 10"
+
+	# `git log` with patches shown with difftastic.
+	dl = -c diff.external=difft log -p --ext-diff
+
+	# Show the most recent commit with difftastic.
+	ds = -c diff.external=difft show --ext-diff
+
+	# `git diff` with difftastic.
+	dft = -c diff.external=difft diff
+
+	prlog = "!f() { \
+      : git log ; \
+      url=$(git config --get remote.origin.url); \
+      base=$(printf '%s\n' \"$url\" | sed -E ' \
+        s#^git@github.com:([^/]+/[^.]+)(\\.git)?$#https://github.com/\\1#; \
+        s#^https://github.com/([^/]+/[^.]+)(\\.git)?$#https://github.com/\\1#; \
+        s#/#\\\\/#g; \
+      '); \
+      if [ -z \"$base\" ]; then \
+        git log \"$@\"; \
+        return; \
+      fi; \
+      ESC=$(printf '\\033'); \
+        git log --color=always \"$@\" \
+        | sed -E \"s/\\(#([0-9]+)\\)/${ESC}]8;;${base}\\/pull\\/\\1${ESC}\\\\\\(#\\1\\)${ESC}]8;;${ESC}\\\\\\/g\"; \
+    }; f"
+	whatchanged = log --raw --no-merges
+
+[merge "mergiraf"]
+	name = mergiraf
+	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
+[feature]
+	manyFiles = true
+[index]
+	threads = true
